@@ -1,10 +1,20 @@
 # meteor-werewolves
 A Werewolves game web app developed with Meteor
 
+## Set up proxy
+SET HTTP_PROXY=http://websurfing1-tin1.esi.adp.com:8080
+SET HTTPS_PROXY=http://websurfing1-tin1.esi.adp.com:8080
+
 ## Install Meteor packages
-### Adding user accounts
+### Add Bootstrap
 ```
-meteor add accounts-ui accounts-password
+meteor add twbs:bootstrap
+```
+
+### Add user accounts
+```
+meteor add accounts-password
+meteor add ian:accounts-ui-bootstrap-3
 ```
 
 ### Routing 

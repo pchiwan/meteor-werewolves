@@ -1,20 +1,8 @@
 <head>
     <title>Meteor Werewolves</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-
 </body>
-
-<template name="home">
-  <div class="container">
-        {{# if currentUser}} 
-            {{currentUser}}
-        {{else}} 
-            <div id="login-screen">
-            {{> loginButtons}} 
-            </div>
-        {{/if}}
-    </div>
-</template>

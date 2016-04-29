@@ -1,0 +1,49 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Jolly+Lodger);
+@import url(https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC);
+body {
+  background-image: url(/images/stardust.png);
+  font-family: Roboto;
+  color: white;
+  font-size: 18px;
+}
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+}
+.btn {
+  min-width: 150px;
+  padding: 10px;
+}
+#login-screen .dropdown-menu {
+  display: block;
+  position: relative;
+  height: 245px;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+#login-screen #login-dropdown-list {
+  display: block;
+}
+#login-screen a.dropdown-toggle {
+  display: none;
+}
+#start-screen {
+  margin: 0 auto;
+  text-align: center;
+}
+#start-screen .title {
+  font-family: 'Jolly Lodger', serif;
+  font-size: 50px;
+  color: floralwhite;
+  text-shadow: 3px 3px 10px crimson;
+}
+#new-game img {
+  width: 100%;
+}

@@ -1,13 +1,17 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import { Accounts } from 'meteor/accounts-base';
+import '../imports/ui/home.js';
+import '../imports/ui/newgame.js';
 
-import './main.html';
+Accounts.ui.config({
+   passwordSignupFields: 'USERNAME_ONLY' 
+});
 
-Router.route('/', function () {
+/** Route definition */
+
+Router.route('/', function() {
   this.render('home');
 });
 
-Template.body.rendered = function(){
-    Accounts._loginButtonsSession.set('dropdownVisible', true);
-    $(".login-close-text").hide();      
-}   
+Router.route('/newgame', function() {
+    this.render('newgame');
+});

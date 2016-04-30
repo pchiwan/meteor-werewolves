@@ -1,0 +1,41 @@
+<template name="creategame">
+    <div class="container" id="create-game">
+        <h1 class="text-center title">Create game</h1>
+        <hr>
+        <p>Choose number of werewolves:</p>
+        <div class="row">
+            <div class="col-md-2 col-sm-3 col-xs-3">
+                <input type="radio" name="wolves" value="1" checked />&nbsp;1
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-3">
+                <input type="radio" name="wolves" value="2" />&nbsp;2
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-3">
+                <input type="radio" name="wolves" value="3" />&nbsp;3
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-3">
+                <input type="radio" name="wolves" value="4" />&nbsp;4
+            </div>
+        </div>
+        <br>
+        <p>Choose special characters:</p>
+        <div>
+            {{#each specialChars}}
+            <div class="row vertical-align special-char{{#if selected}} selected{{/if}}">
+                <div class="card col-md-2 col-sm-2 col-xs-4">
+                    <img src="images/card-{{name}}.png" alt="{{title}}"/>                        
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-8">
+                    {{title}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <br>
+        <div class="row">
+            <p class="text-center">
+                <button id="create-game" class="btn btn-primary">Create game</button>
+            </p>
+        </div>
+    </div>
+</template>

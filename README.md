@@ -11,6 +11,11 @@ SET HTTPS_PROXY=http://websurfing1-tin1.esi.adp.com:8080
 meteor add twbs:bootstrap
 ```
 
+### Add Fontawesome
+```
+meteor add fortawesome:fontawesome
+``` 
+
 ### Add user accounts
 ```
 meteor add accounts-password

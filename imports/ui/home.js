@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 
 import './home.html';
 import './login.html';
-import './startScreen.html';
+import './startscreen.html';
 
 Template.startscreen.rendered = () => {
     Accounts._loginButtonsSession.set('dropdownVisible', true);
@@ -11,9 +11,9 @@ Template.startscreen.rendered = () => {
 
 Template.startscreen.events({
     'click #create-game'(event) {
-        Router.go('/newgame');
+        Router.go('/creategame');
     },
     'click #join-game'(event) {
-        console.log('join game');
+        Router.go('/joingame');
     }
 });

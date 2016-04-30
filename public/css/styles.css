@@ -1,11 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Jolly+Lodger);
-@import url(https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC);
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
 body {
   background-image: url(/images/stardust.png);
   font-family: Roboto;
   color: white;
   font-size: 18px;
+}
+body .title {
+  font-family: 'Amatic SC';
+  font-size: 40px;
+  font-weight: bold;
+}
+body input[type=text] {
+  color: black;
 }
 .vertical-align {
   display: flex;
@@ -17,6 +25,7 @@ body {
   align-items: center;
 }
 .btn {
+  font-size: 18px;
   min-width: 150px;
   padding: 10px;
 }
@@ -40,10 +49,40 @@ body {
 }
 #start-screen .title {
   font-family: 'Jolly Lodger', serif;
-  font-size: 50px;
+  font-size: 70px;
   color: floralwhite;
   text-shadow: 3px 3px 10px crimson;
 }
-#new-game img {
+#create-game img {
   width: 100%;
+}
+#create-game .special-char {
+  padding: 4px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+#create-game .special-char.selected {
+  border-radius: 5px;
+  background-color: wheat;
+  color: black;
+}
+@media (max-width: 600px) {
+  #create-game .special-char {
+    margin: 4px 0;
+  }
+  #create-game .special-char .card {
+    padding-left: 0;
+  }
+}
+#join-game input {
+  padding: 0 5px;
+  font-size: 40px;
+}
+@media (max-width: 600px) {
+  #join-game input {
+    width: 100%;
+  }
+}
+#player-board .user {
+  font-size: 40px;
 }

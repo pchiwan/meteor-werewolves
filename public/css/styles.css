@@ -60,6 +60,7 @@ body input[type=text] {
   padding: 4px;
   margin-bottom: 4px;
   margin-top: 4px;
+  cursor: pointer;
 }
 #create-game .special-char.selected {
   border-radius: 5px;

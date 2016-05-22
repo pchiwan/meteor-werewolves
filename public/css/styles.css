@@ -5,11 +5,11 @@ body {
   background-image: url(/images/stardust.png);
   font-family: Roboto;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
 }
 body .title {
   font-family: 'Amatic SC';
-  font-size: 40px;
+  font-size: 44px;
   font-weight: bold;
 }
 body input[type=text] {
@@ -53,37 +53,59 @@ body input[type=text] {
   color: floralwhite;
   text-shadow: 3px 3px 10px crimson;
 }
-#create-game img {
+#create-game img,
+#dashboard img,
+#player-board img {
   width: 100%;
 }
-#create-game .special-char {
+.special-char {
   padding: 4px;
   margin-bottom: 4px;
   margin-top: 4px;
   cursor: pointer;
 }
-#create-game .special-char.selected {
+.special-char.selected {
   border-radius: 5px;
   background-color: wheat;
   color: black;
 }
-@media (max-width: 600px) {
-  #create-game .special-char {
-    margin: 4px 0;
-  }
-  #create-game .special-char .card {
-    padding-left: 0;
-  }
+.special-char .card,
+.special-char .player-name {
+  font-size: 22px;
 }
 #join-game input {
   padding: 0 5px;
   font-size: 40px;
 }
+#not-found p {
+  font-size: 44px;
+}
+.no-margin-top {
+  margin-top: 0;
+}
 @media (max-width: 600px) {
   #join-game input {
     width: 100%;
   }
+  .special-char {
+    margin: 4px 0;
+  }
+  .special-char .card {
+    padding-left: 0;
+  }
 }
-#player-board .user {
-  font-size: 40px;
+@media (min-width: 768px) {
+  body {
+    font-size: 24px;
+  }
+  body .title {
+    font-size: 60px;
+  }
+  .special-char .card,
+  .special-char .player-name {
+    font-size: 28px;
+  }
+  #not-found p {
+    font-size: 60px;
+  }
 }

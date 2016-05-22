@@ -24,5 +24,6 @@ meteor add ian:accounts-ui-bootstrap-3
 
 ### Routing 
 ```
-meteor add iron:router
+meteor add kadira:flow-router
+meteor add kadira:blaze-layout
 ```

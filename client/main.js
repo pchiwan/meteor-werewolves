@@ -1,32 +1,16 @@
 import { Accounts } from 'meteor/accounts-base';
-import '../imports/ui/home.js';
-import '../imports/ui/creategame.js';
-import '../imports/ui/dashboard.js';
-import '../imports/ui/joingame.js';
-import '../imports/ui/playerboard.js';
+import '../imports/ui/pages/creategame.js';
+import '../imports/ui/pages/dashboard.js';
+import '../imports/ui/pages/home.js';
+import '../imports/ui/pages/joingame.js';
+import '../imports/ui/pages/playerboard.js';
+import '../imports/ui/pages/waitboard.js';
+import '../imports/ui/pages/404.html';
+
+import '../imports/startup/routes.js';
+
+import '../imports/ui/helpers/game.js';
 
 Accounts.ui.config({
    passwordSignupFields: 'USERNAME_ONLY' 
-});
-
-/** Route definition */
-
-Router.route('/', function() {
-  this.render('home');
-});
-
-Router.route('/creategame', function() {
-    this.render('creategame');
-});
-
-Router.route('/dashboard', function() {
-    this.render('dashboard');
-});
-
-Router.route('/joingame', function() {
-    this.render('joingame');
-});
-
-Router.route('/playerboard', function() {
-    this.render('playerboard');
 });

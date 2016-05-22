@@ -1,0 +1,22 @@
+<template name="playerboard">
+  <div class="container" id="player-board">
+    <h1 class="text-center title">Player board</h1>
+    <hr>
+    <p class="text-center">
+      <h2 class="user">{{player.name}}</h2>      
+      {{#if gameStarted game}}
+      <h3>your true identity is:</h3>
+      <br>
+      <div class="card col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
+        {{#if cardFlipped}}
+        <img src="/images/card-back.png" alt="Townsfolk" />
+        {{else}}
+        <img src="/images/card-{{player.role}}.png" alt="{{player.role}}" />
+        {{/if}}
+      </div> 
+      {{else}}
+      <h3>Waiting for the game to start...</h3>
+      {{/if}}
+    </p>
+  </div>
+</template>

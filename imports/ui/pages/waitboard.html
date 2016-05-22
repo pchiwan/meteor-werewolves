@@ -1,0 +1,24 @@
+<template name="waitboard">
+  <div class="container" id="waitboard">
+    <h1 class="text-center title">Waiting for players...</h1>
+    <hr>    
+    <p class="text-center">
+        <h3>Your game code is</h3>
+        <h2 class="no-margin-top">{{game.gameCode}}</h2>                
+    </p>
+    <br>            
+    <div class="logged-players">
+      {{#each players}}
+      <div class="row vertical-align special-char">
+        <div class="player-name col-md-12">
+          <i class="fa fa-user"></i>&nbsp;{{name}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <hr>
+    <p class="text-center">
+      <button id="start-game" class="btn btn-primary" disabled="{{awaiting}}">Start game</button>
+    </p>
+  </div>
+</template>

@@ -14,6 +14,13 @@ Template.creategame.onCreated(function () {
   this.state = new ReactiveDict();
   this.state.set('specialChars', enums.roles.filter(x => x.hasSpecialPowers));
   this.state.set('wolfCount', 1); 
+  
+  this.gameCreated = (err, result) => {
+    var newgame = Games.findOne({ _id: result });
+    
+    // navigate to waitboard            
+    FlowRouter.go('/waitboard/' + newgame.gameCode);
+  }
 });
 
 Template.creategame.helpers({
@@ -39,14 +46,16 @@ Template.creategame.events({
     if (instance.state.get('wolfCount') === 0) {
       return; // can't play without wolves!
     }
-           
+     
+    var selectedSpecialChars = instance.state.get('specialChars')
+      .filter(x => x.selected)
+      .map(x => x.name); 
+          
     // create game in database
     Meteor.call('games.create', 
-      instance.state.get('specialChars'),
+      selectedSpecialChars,
       instance.state.get('wolfCount'),
-      enums.gameStatus.Created);
-      
-    // and navigate to waitboard            
-    FlowRouter.go('/waitboard/' + newGame.gameCode);
+      enums.gameStatus.Created,
+      instance.gameCreated);                 
   }
 });

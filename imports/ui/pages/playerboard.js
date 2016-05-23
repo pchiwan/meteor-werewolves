@@ -15,6 +15,8 @@ Template.playerboard.onCreated(function () {
   
   this.state = new ReactiveDict();
   this.state.set('cardFlipped', false);  
+  
+  this.gameCode = FlowRouter.getParam('gamecode');
 });
 
 Template.playerboard.helpers({
@@ -22,16 +24,17 @@ Template.playerboard.helpers({
     const instance = Template.instance();
     return instance.state.get('cardFlipped');
   },
+  playerIsDead(player) {
+    return player.status === enums.playerStatus.Dead;
+  },
   player() {
     return Players.findOne({
       userId: Meteor.userId(),
-      gameCode: FlowRouter.getParam('gamecode')
+      gameCode: Template.instance().gameCode
     });
   },
   game() {
-    return Games.findOne({
-      gameCode: FlowRouter.getParam('gamecode') 
-    });
+    return Games.findOne({ gameCode: Template.instance().gameCode });
   }  
 });
 

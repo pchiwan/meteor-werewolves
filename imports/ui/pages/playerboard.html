@@ -2,7 +2,7 @@
   <div class="container" id="player-board">
     <h1 class="text-center title">Player board</h1>
     <hr>
-    <p class="text-center">
+    <div class="text-center">
       <h2 class="user">{{player.name}}</h2>      
       {{#if gameStarted game}}
       <h3>your true identity is:</h3>
@@ -11,12 +11,16 @@
         {{#if cardFlipped}}
         <img src="/images/card-back.png" alt="Townsfolk" />
         {{else}}
-        <img src="/images/card-{{player.role}}.png" alt="{{player.role}}" />
+        <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
         {{/if}}
       </div> 
       {{else}}
       <h3>Waiting for the game to start...</h3>
       {{/if}}
-    </p>
+      {{#if playerIsDead player}}
+      <h3>Game over!</h3>
+      <h4>You've been killed!</h4>
+      {{/if}}
+    </div>
   </div>
 </template>

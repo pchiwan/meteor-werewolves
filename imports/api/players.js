@@ -21,6 +21,7 @@ Meteor.methods({
       role: null,
       status: status  
     };
+    
     Players.insert(player);
   },
   'players.updateRole'(playerId, role) {

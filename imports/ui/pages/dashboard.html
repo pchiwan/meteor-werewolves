@@ -17,12 +17,18 @@
       </div>
       {{/each}}
     </div>
+    <br>
+    <div class="row">
+      <p class="text-center">
+        <button id="end-game" class="btn btn-primary">End game</button>
+      </p>
+    </div>
     {{else}}
-      {{#if gameFinished}}
+      {{#if gameEnded game}}
       <h2 class="text-center">Game {{game.gameCode}} is over!</h2>
       {{else}}
       <h2 class="text-center">Game {{game.gameCode}} is not live yet!</h2>
       {{/if}}
-    {{/if}}
+    {{/if}}    
   </div>    
 </template>

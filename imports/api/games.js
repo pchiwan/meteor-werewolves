@@ -23,9 +23,10 @@ Meteor.methods({
       wolfCount: wolfCount,
       status: status,
       creationDate: new Date(),
-      finishDate: null
+      modifiedDate: null
     };    
-    Games.insert(game);
+    
+    return Games.insert(game);
   },
   'games.dealCards'(gameCode, players, roles) {
     if (!this.userId) {
@@ -64,7 +65,8 @@ Meteor.methods({
         gameCode: gameCode
       }, {
       $set: {
-        status: status
+        status: status,
+        modifiedDate: new Date()
       }
     });
   }

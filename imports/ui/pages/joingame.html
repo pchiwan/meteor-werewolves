@@ -7,8 +7,12 @@
       <input id="game-code" type="text" class="text-center" />
     </p>
     <br>
-    <p class="text-center">
+    <div class="text-center">
+      {{#unless playerAlreadyLogged}}
       <button id="join-game" class="btn btn-primary">Join game</button>
-    </p>
+      {{else}}
+      <p>{{playerName}} is already logged in this game!</p>
+      {{/unless}}
+    </div>
   </div>
 </template>

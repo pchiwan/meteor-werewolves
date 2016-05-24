@@ -10,8 +10,8 @@ import '/imports/ui/pages/waitboard/waitboard.js';
 import '/imports/ui/pages/404.html';
 import '/imports/startup/routes.js';
 
-import '/imports/common.scss';
-import '/imports/responsive.scss';
+import '/imports/ui/common.scss';
+import '/imports/ui/responsive.scss';
 
 Accounts.ui.config({
    passwordSignupFields: 'USERNAME_ONLY' 

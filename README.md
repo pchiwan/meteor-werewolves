@@ -27,3 +27,10 @@ meteor add ian:accounts-ui-bootstrap-3
 meteor add kadira:flow-router
 meteor add kadira:blaze-layout
 ```
+
+### Loading SCSS
+```
+meteor remove standard-minifier-css
+meteor add seba:minifiers-autoprefixer
+meteor add fourseven:scss
+```

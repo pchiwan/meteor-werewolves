@@ -1,0 +1,14 @@
+.special-char{
+  padding: 4px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  cursor: pointer;
+  &.selected{
+    border-radius: 5px;
+    background-color: wheat;
+    color: black;
+  }
+  .card, .player-name{
+    font-size: 22px; 
+  }
+}

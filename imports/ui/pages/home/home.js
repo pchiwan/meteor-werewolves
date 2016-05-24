@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './home.html';
+import './home.scss';
 import './login.html';
 import './startscreen.html';
 

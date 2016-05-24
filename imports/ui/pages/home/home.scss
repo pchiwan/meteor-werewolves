@@ -1,0 +1,30 @@
+#login-screen {
+  .dropdown-menu {
+    display: block;
+    position: relative;
+    height: 245px;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
+
+  #login-dropdown-list {
+    display: block;
+  }
+
+  a.dropdown-toggle {
+    display: none;
+  }
+}
+
+#start-screen{
+  margin: 0 auto;
+  text-align: center;
+    
+  .title{
+    font-family: 'Jolly Lodger', serif;
+    font-size: 70px;
+    color: floralwhite;
+    text-shadow: 3px 3px 10px crimson;
+  }
+}

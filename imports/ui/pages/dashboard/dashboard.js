@@ -4,10 +4,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './dashboard.html';
-import enums from '../helpers/enums.js';
+import enums from '/imports/ui/helpers/enums.js';
 
-import { Players } from '../../api/players.js';
-import { Games } from '../../api/games.js';
+import { Players } from '/imports/api/players.js';
+import { Games } from '/imports/api/games.js';
 
 Template.dashboard.onCreated(function () {
   let self = this;

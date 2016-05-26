@@ -34,3 +34,10 @@ meteor remove standard-minifier-css
 meteor add seba:minifiers-autoprefixer
 meteor add fourseven:scss
 ```
+
+## Deploy application to Digital Ocean's droplet
+```
+mupx deploy
+```
+
+Application URL: http://146.185.156.178/

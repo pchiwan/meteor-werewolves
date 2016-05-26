@@ -29,7 +29,7 @@ Template.joingame.helpers({
 
 Template.joingame.events({
   'click button#join-game'(event, instance) {
-    var gameCode = template.find('#game-code').value;
+    var gameCode = instance.find('#game-code').value;
     if (gameCode) {      
             
       // check if player already exists in the database

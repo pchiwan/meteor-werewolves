@@ -25,3 +25,4 @@ kadira:flow-router
 kadira:blaze-layout
 seba:minifiers-autoprefixer
 fourseven:scss
+peppelg:bootstrap-3-modal

@@ -33,26 +33,28 @@ Template.waitboard.helpers({
   },
   awaiting() {
     var players = Template.instance().fetchPlayers();
-    // return players.length < enums.minPlayers;
-    return false;
+    return players.length < enums.minPlayers;    
   }
 });
 
 Template.waitboard.events({
   'click #start-game'(event, instance) {
-    // there should at least be 8 players to start the game
+    // there should at least be 8 players to start the game       
     var players = instance.fetchPlayers();
+        
+    if (players.length >= enums.minPlayers) {
+      // deal game cards
+      Meteor.call('games.dealCards', instance.gameCode, players, enums.roles);
 
-    // if (players.length >= enums.minPlayers) {
-    // deal game cards
-    Meteor.call('games.dealCards', instance.gameCode, players, enums.roles);
+      // update game
+      Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Live);
 
-    // update game
-    Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Live);
-
-    // and navigate to deathboard
-    FlowRouter.go('/dashboard/' + instance.gameCode);
-    // }
+      // and navigate to deathboard
+      FlowRouter.go('/dashboard/' + instance.gameCode);
+    }
+  },
+  'click #goto-dashboard'(event, instance) {
+    FlowRouter.go('/dashboard' + instance.gameCode);
   }
 });
 

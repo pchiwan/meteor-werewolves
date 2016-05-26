@@ -2,9 +2,16 @@
   <div class="container" id="player-board">
     <h1 class="text-center title">Player board</h1>
     <hr>
-    <div class="text-center">
-      <h2 class="user">{{player.name}}</h2>      
-      {{#if gameStarted game}}
+    <div class="text-center row">
+      <h2 class="user">{{player.name}}</h2> 
+      {{#if playerIsDead player.status}}
+      <div class="game-over">      
+        <h3>Game over</h3>
+        <h4>You've been killed!</h4>
+        <br><br>
+      </div>
+      {{/if}}
+      {{#if gameIsStarted game.status}}
       <h3>your true identity is:</h3>
       <br>
       <div class="card col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
@@ -17,10 +24,6 @@
       {{else}}
       <h3>Waiting for the game to start...</h3>
       {{/if}}
-      {{#if playerIsDead player}}
-      <h3>Game over!</h3>
-      <h4>You've been killed!</h4>
-      {{/if}}
-    </div>
+    </div>    
   </div>
 </template>

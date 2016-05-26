@@ -1,17 +1,17 @@
-<template name="dashboard">
+<template name="dashboard">  
   <div class="container" id="dashboard">
     <h1 class="text-center title">Deathboard</h1>
     <hr>
-    {{#if gameStarted game}}
+    {{#if gameIsStarted game.status}}
     <h2 class="text-center">Game {{game.gameCode}} is on!</h2>        
     <br>
     <div class="logged-players">
       {{#each players}}
-      <div class="row vertical-align special-char">
+      <div class="row vertical-align special-char {{#if playerIsDead status}}is-dead{{/if}}">
         <div class="card col-md-2 col-sm-2 col-xs-4">
           <img src="/images/card-{{role}}.png" alt="{{role}}" />                        
         </div>
-        <div class="player-name col-md-10 col-sm-10 col-xs-8">
+        <div class="player-name col-md-10 col-sm-10 col-xs-8" id="{{_id}}">
           {{name}}
         </div>
       </div>
@@ -24,8 +24,12 @@
       </p>
     </div>
     {{else}}
-      {{#if gameEnded game}}
+      {{#if gameIsEnded game.status}}
       <h2 class="text-center">Game {{game.gameCode}} is over!</h2>
+      <div class="text-center">
+        <br><br><br><br>
+        <button class="btn btn-primary" id="exit">Exit</button>
+      </div>
       {{else}}
       <h2 class="text-center">Game {{game.gameCode}} is not live yet!</h2>
       {{/if}}

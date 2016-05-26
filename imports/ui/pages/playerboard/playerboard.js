@@ -23,10 +23,7 @@ Template.playerboard.helpers({
   cardFlipped() {
     const instance = Template.instance();
     return instance.state.get('cardFlipped');
-  },
-  playerIsDead(player) {
-    return player.status === enums.playerStatus.Dead;
-  },
+  },  
   player() {
     return Players.findOne({
       userId: Meteor.userId(),

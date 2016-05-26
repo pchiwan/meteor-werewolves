@@ -41,6 +41,16 @@ input[type=text]{
   padding: 10px;
 }
 
+.modal-title, .modal-body{
+  color: black;
+  text-align: center;
+  font-weight: bold;  
+}
+
+.modal-footer{
+  text-align: center;
+}
+
 .no-margin-top{
     margin-top: 0;
 }

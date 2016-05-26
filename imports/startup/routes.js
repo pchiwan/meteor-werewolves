@@ -1,6 +1,9 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
+import enums from '../ui/helpers/enums.js';
+import { Games } from '/imports/api/games.js';
+
 FlowRouter.route('/', {
   action: () => {
     BlazeLayout.render('layout', { main: 'home' });

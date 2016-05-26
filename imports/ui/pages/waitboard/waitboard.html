@@ -16,9 +16,13 @@
       </div>
       {{/each}}
     </div>
-    <hr>
+    <hr>    
     <p class="text-center">
+      {{#if gameIsCreated game.status}}
       <button id="start-game" class="btn btn-primary" disabled="{{awaiting}}">Start game</button>
+      {{else}}
+      <button id="goto-dashboard" class="btn btn-primary">Go to dashboard</button>      
+      {{/if}}
     </p>
   </div>
 </template>

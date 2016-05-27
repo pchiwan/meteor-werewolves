@@ -1,3 +1,9 @@
+.title{
+  font-family: 'Amatic SC';
+  font-size: 44px;
+  font-weight: bold;
+}
+
 .special-char{
   padding: 4px;
   margin-bottom: 4px;
@@ -30,4 +36,8 @@
   h4{
     font-size: 30px;
   }
+}
+
+#not-found p{
+  font-size: 44px;
 }

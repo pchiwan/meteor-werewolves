@@ -8,21 +8,29 @@
       <div class="game-over">      
         <h3>Game over</h3>
         <h4>You've been killed!</h4>
-        <br><br>
+        <br>
+        <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">
+          <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
+        </div>
       </div>
-      {{/if}}
-      {{#if gameIsStarted game.status}}
-      <h3>your true identity is:</h3>
-      <br>
-      <div class="card col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8">
-        {{#if cardFlipped}}
-        <img src="/images/card-back.png" alt="Townsfolk" />
-        {{else}}
-        <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
-        {{/if}}
-      </div> 
       {{else}}
-      <h3>Waiting for the game to start...</h3>
+        {{#if gameIsStarted game.status}}
+        <h3>your true identity is:</h3>
+        <br>
+        <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">
+          {{#if cardFlipped}}
+          <img src="/images/card-back.png" alt="Townsfolk" />
+          {{else}}
+          <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
+          {{/if}}
+        </div> 
+        {{else}}
+          {{#if gameIsCreated game.status}}
+          <h3>Waiting for the game to start...</h3>
+          {{else}}
+          <h3 class="text-center">Game {{game.gameCode}} is over!</h3>
+          {{/if}}
+        {{/if}}
       {{/if}}
     </div>    
   </div>

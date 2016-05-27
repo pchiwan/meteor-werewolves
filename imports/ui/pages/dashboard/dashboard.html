@@ -2,37 +2,45 @@
   <div class="container" id="dashboard">
     <h1 class="text-center title">Deathboard</h1>
     <hr>
-    {{#if gameIsStarted game.status}}
-    <h2 class="text-center">Game {{game.gameCode}} is on!</h2>        
-    <br>
-    <div class="logged-players">
-      {{#each players}}
-      <div class="row vertical-align special-char {{#if playerIsDead status}}is-dead{{/if}}">
-        <div class="card col-md-2 col-sm-2 col-xs-4">
-          <img src="/images/card-{{role}}.png" alt="{{role}}" />                        
+    {{#if userOwnsGame game}}
+      {{#if gameIsStarted game.status}}
+      <h2 class="text-center">Game {{game.gameCode}} is on!</h2>        
+      <br>
+      <div class="logged-players">
+        {{#each players}}
+        <div class="row vertical-align special-char {{#if playerIsDead status}}is-dead{{/if}}">
+          <div class="card col-md-2 col-sm-2 col-xs-4">
+            <img src="/images/card-{{role}}.png" alt="{{role}}" />                        
+          </div>
+          <div class="player-name col-md-10 col-sm-10 col-xs-8" id="{{_id}}">
+            {{name}}
+          </div>
         </div>
-        <div class="player-name col-md-10 col-sm-10 col-xs-8" id="{{_id}}">
-          {{name}}
-        </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </div>
-    <br>
-    <div class="row">
-      <p class="text-center">
-        <button id="end-game" class="btn btn-primary">End game</button>
-      </p>
-    </div>
-    {{else}}
-      {{#if gameIsEnded game.status}}
-      <h2 class="text-center">Game {{game.gameCode}} is over!</h2>
-      <div class="text-center">
-        <br><br><br><br>
-        <button class="btn btn-primary" id="exit">Exit</button>
+      <br>
+      <div class="row">
+        <p class="text-center">
+          <button id="end-game" class="btn btn-primary">End game</button>
+        </p>
       </div>
       {{else}}
-      <h2 class="text-center">Game {{game.gameCode}} is not live yet!</h2>
+        {{#if gameIsEnded game.status}}
+        <h2 class="text-center">Game {{game.gameCode}} is over!</h2>
+        <div class="text-center">
+          <br><br><br><br>
+          <button class="btn btn-primary" id="go-home">Go home!</button>
+        </div>
+        {{else}}
+        <h2 class="text-center">Game {{game.gameCode}} is not live yet!</h2>
+        {{/if}}
       {{/if}}
-    {{/if}}    
+    {{else}}
+    <div class="text-center">
+      <h1>Game {{game.gameCode}} does not belong to you!</h1>
+      <br><br><br><br>
+      <button id="go-home" class="btn btn-primary">Go home!</button>
+    </div> 
+    {{/if}} 
   </div>    
 </template>

@@ -8,18 +8,13 @@ body{
   font-family: Roboto;
   color: white;
   font-size: 20px;
+  margin-bottom: 40px;
 }
 
 img{
   width: 100%;
 }
-    
-.title{
-  font-family: 'Amatic SC';
-  font-size: 44px;
-  font-weight: bold;
-}
-    
+
 input[type=text]{
   color: black;
 }
@@ -55,6 +50,3 @@ input[type=text]{
     margin-top: 0;
 }
 
-#not-found p{
-  font-size: 44px;
-}

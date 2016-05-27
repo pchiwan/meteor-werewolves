@@ -54,7 +54,10 @@ Template.waitboard.events({
     }
   },
   'click #goto-dashboard'(event, instance) {
-    FlowRouter.go('/dashboard' + instance.gameCode);
+    FlowRouter.go('/dashboard/' + instance.gameCode);
+  },
+  'click #go-home'(event) {
+    FlowRouter.go('/');
   }
 });
 

@@ -2,6 +2,7 @@
   <div class="container" id="waitboard">
     <h1 class="text-center title">Waiting for players...</h1>
     <hr>    
+    {{#if userOwnsGame game}}
     <p class="text-center">
         <h3>Your game code is</h3>
         <h2 class="no-margin-top">{{game.gameCode}}</h2>                
@@ -24,5 +25,12 @@
       <button id="goto-dashboard" class="btn btn-primary">Go to dashboard</button>      
       {{/if}}
     </p>
+    {{else}}
+    <div class="text-center">
+      <h1>Game {{game.gameCode}} does not belong to you!</h1>
+      <br><br><br><br>
+      <button id="go-home" class="btn btn-primary">Go home!</button>
+    </div> 
+    {{/if}}
   </div>
 </template>

@@ -1,5 +1,7 @@
 #login-screen {
-  margin: 50px 400px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   
   .dropdown-menu {
     display: block;
@@ -12,6 +14,7 @@
 
   #login-dropdown-list {
     display: block;
+    width: 90%;
   }
 
   a.dropdown-toggle {

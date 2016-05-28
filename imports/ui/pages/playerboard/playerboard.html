@@ -15,15 +15,18 @@
       </div>
       {{else}}
         {{#if gameIsStarted game.status}}
-        <h3>your true identity is:</h3>
+        <h3>Your true identity is:</h3>
         <br>
         <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">
           {{#if cardFlipped}}
           <img src="/images/card-back.png" alt="Townsfolk" />
           {{else}}
           <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
-          {{/if}}
+          {{/if}}          
         </div> 
+        <div class="col-md-12">
+          <h3>(click on card to flip it)</h3>
+        </div>
         {{else}}
           {{#if gameIsCreated game.status}}
           <h3>Waiting for the game to start...</h3>

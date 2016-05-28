@@ -13,9 +13,6 @@ import { Players } from '/imports/api/players.js';
 Template.joingame.onCreated(function () {
   Meteor.subscribe('games');
   Meteor.subscribe('players');
-  
-  this.state = new ReactiveDict();
-  this.state.set('playerAlreadyLogged', false);
 });
 
 Template.joingame.helpers({
@@ -31,35 +28,30 @@ Template.joingame.events({
   'click button#join-game'(event, instance) {
     var gameCode = instance.find('#game-code').value;
     if (gameCode) {      
-            
-      // check if player already exists in the database
-      var player = Players.findOne({
-        userId: Meteor.userId(),
-        gameCode: Template.instance().gameCode
-      });
+      // check whether game code exists in the database
+      var game = Games.findOne({ gameCode: gameCode });
       
-      if (player) {
-        // do not allow players to log more than once into game
-        instance().state.set('playerAlreadyLogged', true);
-        return false;  
-      }
-      
-      // check if game code exists in the database
-      var game = Games.findOne({
-        gameCode: gameCode,
-        status: enums.gameStatus.Created
-      });
-      
-      // if game with given code exists... 
       if (game) {
+        // check if player is already logged in to game
+        var player = Players.findOne({
+          userId: Meteor.userId(),
+          gameCode: Template.instance().gameCode
+        });
+        
+        if (player) {
+          // if player is already logged in, send him to the playerboard
+          FlowRouter.go('/playerboard/' + game.gameCode);
+          return false;  
+        }
+        
         // register player to join game
         Meteor.call('players.create', 
           game.gameCode, 
           enums.playerStatus.Alive);
         
         // and navigate to player's dashboard
-        FlowRouter.go('/playerboard/' + game.gameCode); 
-      }            
+        FlowRouter.go('/playerboard/' + game.gameCode);               
+      }      
     }
   } 
 });

@@ -19,7 +19,7 @@ if (Meteor.isServer) {
         owner: this.userId,
         gameCode: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 6).toUpperCase(),
         specialChars: selectedChars,
-        wolfCount: wolfCount,
+        wolfCount: parseInt(wolfCount, 10),
         status: status,
         creationDate: new Date(),
         modifiedDate: null
@@ -44,14 +44,14 @@ if (Meteor.isServer) {
       // wolves
       for (var i = 0, l = game.wolfCount; i < l; i++)
         cards.push(rolesMapped.werewolf);
-      // villagers
+      // villagers      
       for (var i = 0, l = villagerCount; i < l; i++)
         cards.push(rolesMapped.villager);
 
       // now let's randomly deal roles to players
       players.forEach((player) => {
         var index = Math.floor(Math.random() * cards.length),
-          card = cards.splice(index, 1);
+            card = cards.splice(index, 1);
 
         // assign role to player and update in database
         Meteor.call('players.updateRole', player._id, card[0]);

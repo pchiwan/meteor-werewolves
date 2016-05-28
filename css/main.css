@@ -8,6 +8,7 @@ body{
   font-size: 16px;
   text-align: center;
   background-color: ivory;
+  margin-bottom: 20px;
 }
 
 .page-header{
@@ -73,4 +74,9 @@ a{
   margin-top: .5rem;
   background-color: gainsboro;
   border-radius: 3px;
+}
+
+footer{
+  font-size: 12px;
+  padding-top: 20px;  
 }

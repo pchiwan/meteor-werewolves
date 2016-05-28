@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Jolly+Lodger);
-@import url(https://fonts.googleapis.com/css?family=Raleway+Dots);
-@import url(https://fonts.googleapis.com/css?family=Raleway:700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,700);
 
 body{
   font-family: Lato;
@@ -33,7 +32,8 @@ body{
   justify-content: center;
   align-items: baseline;
   color: ivory;
-  font-family: 'Raleway Dots', sans-serif;
+  font-family: Raleway, sans-serif;
+  font-weight: 200;
   font-size: 32px;
   margin-bottom: 60px;
 }

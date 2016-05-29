@@ -81,6 +81,13 @@ footer{
   padding-top: 20px;  
 }
 
+@media (max-width: 400px) {
+  .page-header .title{
+    line-height: 60px;
+    padding-bottom: 20px;
+  }
+}
+
 @media (max-width: 720px) {
   .page-header{
     padding-top: 20px;

@@ -13,7 +13,7 @@ body{
 
 .page-header{
   background-image: url(../images/stardust.png);
-  padding: 50px 0 40px;      
+  padding: 40px 0 40px;      
 }
 
 .page-header .btn{
@@ -79,4 +79,37 @@ a{
 footer{
   font-size: 12px;
   padding-top: 20px;  
+}
+
+@media (max-width: 720px) {
+  .page-header{
+    padding-top: 20px;
+  }
+  
+  .page-header .btn{
+    margin: 10px auto;
+    display: block;
+    width: 200px;
+  }
+  
+  .page-header .title{
+    font-size: 70px;
+  }  
+}
+
+@media (max-width: 840px) {
+  .page-header .subtitle{
+    font-size: 24px;
+    display: block;
+    text-align: center;
+  }
+  
+  .page-header .subtitle label{
+    display: block;
+  }
+  
+  .page-header .subtitle img{
+    display: block;
+    margin: 0 auto;
+  }
 }

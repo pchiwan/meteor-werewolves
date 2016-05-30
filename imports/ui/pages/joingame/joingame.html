@@ -1,13 +1,17 @@
 <template name="joingame">
-  <div class="container" id="join-game">
-    <h1 class="text-center title">Join game</h1>
+  <div class="container text-center" id="join-game">
+    <h1 class="title">Join game</h1>
     <hr>
-    <p class="text-center">Enter game code:</p>
-    <p class="text-center">
+    <p>Enter game code:</p>
+    <p>
       <input id="game-code" type="text" class="text-center" />
     </p>
     <br>
-    <div class="text-center">
+    {{#if cantJoinGame}}
+    <p class="error">{{errorMessage}}</p>
+    <br>
+    {{/if}}
+    <div>
       <button id="join-game" class="btn btn-primary">Join game</button>
     </div>
   </div>

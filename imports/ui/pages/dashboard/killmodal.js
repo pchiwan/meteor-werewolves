@@ -14,5 +14,8 @@ Template.killmodal.events({
     // eliminate player
     Meteor.call('players.updateStatus', instance.player._id, enums.playerStatus.Dead);
     Modal.hide('killmodal');
+    
+    // check game status and finish game if necessary
+    // TODO
   }
 });

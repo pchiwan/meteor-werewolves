@@ -15,7 +15,7 @@ Template.joingame.onCreated(function () {
   Meteor.subscribe('players');
   
   this.state = new ReactiveDict();
-  this.state.set('cantJoinGame', false);
+  this.state.set('hasErrors', false);
   this.state.set('errorMessage', '');
 });
 
@@ -23,8 +23,8 @@ Template.joingame.helpers({
   playerName() {
     return Meteor.user().username;
   },
-  cantJoinGame() {
-    return Template.instance().state.get('cantJoinGame');
+  hasErrors() {
+    return Template.instance().state.get('hasErrors');
   },
   errorMessage() {
     return Template.instance().state.get('errorMessage');
@@ -50,15 +50,20 @@ Template.joingame.events({
           FlowRouter.go('/playerboard/' + game.gameCode);
           return false;  
         }
+                
+        var total = Players.count({ gameCode: Template.instance().gameCode });
         
-        // if player is not logged in and the game is live, kick player out
-        if (game.status === enums.gameStatus.Live) {
-          instance.state.set('cantJoinGame', true);
+        // player is not logged in and
+        // + the game is already full (current number of players = max),
+        // + or the game is live
+        // then kick player out
+        if (game.status === enums.gameStatus.Live || total === enums.maxPlayers) {
+          instance.state.set('hasErrors', true);
           instance.state.set('errorMessage', 'You can not join this game. Please use a different code.');
           return false;
         }
         
-        // register player to join game
+        // finally, if all is good register player to join game
         Meteor.call('players.create', 
           game.gameCode, 
           enums.playerStatus.Alive);
@@ -66,7 +71,7 @@ Template.joingame.events({
         // and navigate to player's dashboard
         FlowRouter.go('/playerboard/' + game.gameCode);               
       } else {
-        instance.state.set('cantJoinGame', true);
+        instance.state.set('hasErrors', true);
         instance.state.set('errorMessage', 'This game does not exist. Please use a different code.');
       }     
     }

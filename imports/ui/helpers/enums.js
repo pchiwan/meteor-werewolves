@@ -16,5 +16,6 @@ export default {
     Alive: 1,
     Dead: 2
   },
-  minPlayers: 8
+  minPlayers: 8,
+  maxPlayers: 18
 };

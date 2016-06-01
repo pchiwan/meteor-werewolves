@@ -56,7 +56,7 @@ if (Meteor.isServer) {
         // assign role to player and update in database
         Meteor.call('players.updateRole', player._id, card[0]);
       });
-    },
+    },    
     'games.updateStatus'(gameCode, status) {
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');

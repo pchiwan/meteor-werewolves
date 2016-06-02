@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './waitboard.html';
-import enums from '/imports/ui/helpers/enums.js';
+import enums from '/imports/helpers/enums.js';
 
 import { Players } from '/imports/api/players.js';
 import { Games } from '/imports/api/games.js';
@@ -44,7 +44,7 @@ Template.waitboard.events({
         
     if (players.length >= enums.minPlayers) {
       // deal game cards
-      Meteor.call('games.dealCards', instance.gameCode, players, enums.roles);
+      Meteor.call('games.dealCards', instance.gameCode, players);
 
       // update game
       Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Live);

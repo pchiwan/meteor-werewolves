@@ -3,36 +3,38 @@
     <h1 class="text-center title">Player board</h1>
     <hr>
     <div class="text-center row">
-      <h2 class="user">{{player.name}}</h2> 
-      {{#if playerIsDead player.status}}
-      <div class="game-over">      
-        <h3>Game over</h3>
-        <h4>You've been killed!</h4>
-        <br>
-        <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">
-          <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
-        </div>
-      </div>
+      <h1 class="user">{{player.name}}</h1>
+      {{#if gameIsFinished game.status}}
+      <h2 class="crimson">Game {{game.gameCode}} is over!</h2>
+      <h3>{{#if villagersWon game}}Villagers{{else}}Werewolves{{/if}} won!</h3>
+      <br><br><br><br>
+      <button id="go-home" class="btn btn-primary">Go home!</button>
       {{else}}
         {{#if gameIsStarted game.status}}
-        <h3>Your true identity is:</h3>
-        <br>
-        <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">
-          {{#if cardFlipped}}
-          <img src="/images/card-back.png" alt="Townsfolk" />
+          {{#if playerIsDead player.status}}
+          <div class="game-over">      
+            <h2>Game over</h2>
+            <h3>You've been killed!</h3>
+            <br>
+            <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-3 col-xs-6">
+              <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
+            </div>
+          </div>
           {{else}}
-          <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
-          {{/if}}          
-        </div> 
-        <div class="col-md-12">
+          <h3>Your true identity is:</h3>
+          <br>
+          <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-3 col-xs-6">
+            {{#if cardFlipped}}
+            <img src="/images/card-back.png" alt="Townsfolk" />
+            {{else}}
+            <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
+            {{/if}}                    
+          </div>
+          <div class="clearfix"></div> 
           <h3>(click on card to flip it)</h3>
-        </div>
-        {{else}}
-          {{#if gameIsCreated game.status}}
-          <h3>Waiting for the game to start...</h3>
-          {{else}}
-          <h3 class="text-center">Game {{game.gameCode}} is over!</h3>
           {{/if}}
+        {{else}}
+        <h2>Waiting for the game to start...</h2>
         {{/if}}
       {{/if}}
     </div>    

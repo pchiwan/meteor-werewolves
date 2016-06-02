@@ -25,9 +25,10 @@
         </p>
       </div>
       {{else}}
-        {{#if gameIsEnded game.status}}
-        <h2 class="text-center">Game {{game.gameCode}} is over!</h2>
+        {{#if gameIsFinished game.status}}
         <div class="text-center">
+          <h2 class="crimson">Game {{game.gameCode}} is over!</h2>
+          <h3>{{#if villagersWon game}}Villagers{{else}}Werewolves{{/if}} won!</h3>
           <br><br><br><br>
           <button class="btn btn-primary" id="go-home">Go home!</button>
         </div>

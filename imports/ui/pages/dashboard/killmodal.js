@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 
 import './killmodal.html';
-import enums from '/imports/ui/helpers/enums.js';
+import enums from '/imports/helpers/enums.js';
 
 import { Players } from '/imports/api/players.js';
 
@@ -16,6 +16,6 @@ Template.killmodal.events({
     Modal.hide('killmodal');
     
     // check game status and finish game if necessary
-    // TODO
+    Meteor.call('games.checkStatus', instance.player.gameCode);
   }
 });

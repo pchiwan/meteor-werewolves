@@ -19,7 +19,7 @@
   &.is-dead{
     text-decoration: line-through;
     cursor: default !important;
-    color: red;
+    color: crimson;
   }
   
   .card, .player-name{
@@ -28,16 +28,24 @@
 }
 
 .game-over{
-  color: red;
-  h3{
+  color: crimson;
+  h2{
     font-size: 36px;
     text-transform: uppercase;
   }
-  h4{
+  h3{
     font-size: 30px;
   }
 }
 
 #not-found p{
   font-size: 44px;
+}
+
+.no-margin-top{
+    margin-top: 0;
+}
+
+.crimson{
+  color: crimson;
 }

@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './playerboard.html';
-import enums from '/imports/ui/helpers/enums.js';
+import enums from '/imports/helpers/enums.js';
 
 import { Games } from '/imports/api/games.js';
 import { Players } from  '/imports/api/players.js';
@@ -39,5 +39,8 @@ Template.playerboard.events({
   'click .card'(event, instance) {
     // flip card
     instance.state.set('cardFlipped', !instance.state.get('cardFlipped'));
+  },
+  'click #go-home'() {
+    FlowRouter.go('/');
   }
 });

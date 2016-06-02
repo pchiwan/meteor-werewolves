@@ -5,7 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './joingame.html';
 import './joingame.scss';
-import enums from '/imports/ui/helpers/enums.js';
+import enums from '/imports/helpers/enums.js';
 
 import { Games } from '/imports/api/games.js';
 import { Players } from '/imports/api/players.js';
@@ -51,7 +51,7 @@ Template.joingame.events({
           return false;  
         }
                 
-        var total = Players.count({ gameCode: Template.instance().gameCode });
+        var total = Players.find({ gameCode: Template.instance().gameCode }).count();
         
         // player is not logged in and
         // + the game is already full (current number of players = max),
@@ -64,9 +64,7 @@ Template.joingame.events({
         }
         
         // finally, if all is good register player to join game
-        Meteor.call('players.create', 
-          game.gameCode, 
-          enums.playerStatus.Alive);
+        Meteor.call('players.create', game.gameCode);
         
         // and navigate to player's dashboard
         FlowRouter.go('/playerboard/' + game.gameCode);               

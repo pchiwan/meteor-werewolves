@@ -7,6 +7,14 @@ export default {
     { id: 5, name: 'werewolf',      hasSpecialPowers: false, title: 'Werewolf' },
     { id: 6, name: 'villager',      hasSpecialPowers: false, title: 'Villager' }
   ],
+  roleNames: {
+    fortuneteller: 'fortuneteller',
+    huntsman: 'huntsman',     
+    littlegirl: 'littlegirl',   
+    witch: 'witch',        
+    werewolf: 'werewolf',     
+    villager: 'villager'     
+  },
   gameStatus: {
     Created: 1,
     Live: 2,

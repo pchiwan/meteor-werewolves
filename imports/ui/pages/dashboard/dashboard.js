@@ -5,7 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './dashboard.html';
 import './killmodal.js';
-import enums from '/imports/ui/helpers/enums.js';
+import enums from '/imports/helpers/enums.js';
 
 import { Players } from '/imports/api/players.js';
 import { Games } from '/imports/api/games.js';
@@ -49,7 +49,7 @@ Template.dashboard.events({
   'click #end-game'(event, instance) {
     Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Finished);
   },
-  'click #go-home'(event) {
+  'click #go-home'() {
     FlowRouter.go('/');
   }
 });

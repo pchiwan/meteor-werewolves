@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
+import enums from '/imports/helpers/enums.js';
+
 export const Players = new Mongo.Collection('players');
 
 if (Meteor.isServer) {
@@ -8,7 +10,7 @@ if (Meteor.isServer) {
   Meteor.publish('players', () => Players.find());
 
   Meteor.methods({
-    'players.create'(gameCode, status) {
+    'players.create'(gameCode) {
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
@@ -18,7 +20,7 @@ if (Meteor.isServer) {
         name: Meteor.user().username,
         gameCode: gameCode,
         role: null,
-        status: status
+        status: enums.playerStatus.Alive
       };
 
       Players.insert(player);
@@ -29,9 +31,7 @@ if (Meteor.isServer) {
       }
 
       Players.update(playerId, {
-        $set: {
-          role: role
-        }
+        $set: { role: role }
       });
     },
     'players.updateStatus'(playerId, status) {
@@ -40,9 +40,7 @@ if (Meteor.isServer) {
       }
 
       Players.update(playerId, {
-        $set: {
-          status: status
-        }
+        $set: { status: status }
       });
     }
   });

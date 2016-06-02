@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
-import enums from '/imports/ui/helpers/enums.js';
+import enums from '/imports/helpers/enums.js';
 import './creategame.html';
 
 import { Games } from '/imports/api/games.js';
@@ -55,7 +55,6 @@ Template.creategame.events({
     Meteor.call('games.create', 
       selectedSpecialChars,
       instance.state.get('wolfCount'),
-      enums.gameStatus.Created,
       instance.gameCreated);                 
   }
 });

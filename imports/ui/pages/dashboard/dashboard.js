@@ -44,6 +44,11 @@ Template.dashboard.events({
 
     if (player.status !== enums.playerStatus.Dead) {
       Modal.show('killmodal', player, { keyboard: false });
+    } else {
+      var game = Template.instance().fetchGame();
+      if (!game.witchUsedRevivePower) {
+        Modal.show('revivemodal', player, { keyboard: false });
+      }  
     }
   },
   'click #end-game'(event, instance) {

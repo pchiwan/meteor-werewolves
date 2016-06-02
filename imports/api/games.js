@@ -45,12 +45,10 @@ if (Meteor.isServer) {
       // +there are more werewolves left than townsfolk, or
       // +there's one werewolf and one townsfolk left
       if (werewolves === 0 || werewolves > villagers || (werewolves === 1 && villagers === 1)) {
-        Games.update({ gameCode: gameCode }, {
-          $set: {
-            status: enums.gameStatus.Finished,
-            modifiedDate: new Date(),
-            victory: werewolves === 0
-          }
+        Meteor.call('games.setProperty', gameCode, {
+          status: enums.gameStatus.Finished,
+          modifiedDate: new Date(),
+          victory: werewolves === 0
         });
       }
     },
@@ -86,7 +84,16 @@ if (Meteor.isServer) {
         // assign role to player and update in database
         Meteor.call('players.updateRole', player._id, card[0]);
       });
-    },      
+    },
+    'games.setProperty'(gameCode, prop) {
+      if (!this.userId) {
+        throw new Meteor.Error('not-authorized');
+      }
+
+      Games.update({ gameCode: gameCode }, {
+        $set: prop
+      });
+    },   
     'games.updateStatus'(gameCode, status) {
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');

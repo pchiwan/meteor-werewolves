@@ -54,6 +54,9 @@ Template.dashboard.events({
   'click #end-game'(event, instance) {
     Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Finished);
   },
+  'click #game-over'(event, instance) {
+    FlowRouter.go('/gameover/' + instance.gameCode);
+  },
   'click #go-home'() {
     FlowRouter.go('/');
   }

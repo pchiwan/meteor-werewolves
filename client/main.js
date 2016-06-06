@@ -4,6 +4,7 @@ import '/imports/ui/helpers/game.js';
 import '/imports/ui/helpers/player.js';
 import '/imports/ui/pages/creategame/creategame.js';
 import '/imports/ui/pages/dashboard/dashboard.js';
+import '/imports/ui/pages/gameover/gameover.js';
 import '/imports/ui/pages/home/home.js';
 import '/imports/ui/pages/joingame/joingame.js';
 import '/imports/ui/pages//playerboard/playerboard.js';

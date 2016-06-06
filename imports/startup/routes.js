@@ -2,7 +2,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 import enums from '/imports/helpers/enums.js';
-import { Games } from '/imports/api/games.js';
 
 FlowRouter.route('/', {
   action: () => {
@@ -16,15 +15,15 @@ FlowRouter.route('/creategame', {
   }
 });
 
-FlowRouter.route('/waitboard/:gamecode', {
-  action: () => {
-    BlazeLayout.render('layout', { main: 'waitboard' });
-  }
-});
-
 FlowRouter.route('/dashboard/:gamecode', {
   action: () => {
     BlazeLayout.render('layout', { main: 'dashboard' });
+  }
+});
+
+FlowRouter.route('/gameover/:gamecode', {
+  action: () => {
+    BlazeLayout.render('layout', { main: 'gameover' });
   }
 });
 
@@ -37,6 +36,12 @@ FlowRouter.route('/joingame', {
 FlowRouter.route('/playerboard/:gamecode', {
   action: () => {
     BlazeLayout.render('layout', { main: 'playerboard' });
+  }
+});
+
+FlowRouter.route('/waitboard/:gamecode', {
+  action: () => {
+    BlazeLayout.render('layout', { main: 'waitboard' });
   }
 });
 

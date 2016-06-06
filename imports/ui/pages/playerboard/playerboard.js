@@ -40,7 +40,7 @@ Template.playerboard.events({
     // flip card
     instance.state.set('cardFlipped', !instance.state.get('cardFlipped'));
   },
-  'click #go-home'() {
-    FlowRouter.go('/');
+  'click #game-over'(event, instance) {
+    FlowRouter.go('/gameover/' + instance.gameCode);
   }
 });

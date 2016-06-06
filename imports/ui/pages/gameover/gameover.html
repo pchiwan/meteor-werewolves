@@ -1,0 +1,29 @@
+<template name="gameover">
+  <div class="container" id="gameover">
+    <h1 class="text-center title">Game over</h1>
+    <hr>
+    <div class="text-center">
+      <h2 class="crimson">Game {{game.gameCode}} is over!</h2>
+      <h3>{{#if villagersWon game}}Villagers{{else}}Werewolves{{/if}} won!</h3>
+    </div>
+    <hr>
+    <div class="logged-players">
+        {{#each players}}
+        <div class="row vertical-align special-char {{#if playerIsDead status}}is-dead{{/if}}">
+          <div class="card col-md-2 col-sm-2 col-xs-4">
+            <img src="/images/card-{{role}}.png" alt="{{role}}" />                        
+          </div>
+          <div class="player-name col-md-10 col-sm-10 col-xs-8">
+            {{name}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+  </div>
+  <br>
+  <div class="row">
+    <p class="text-center">
+      <button id="go-home" class="btn btn-primary">Go home!</button>
+    </p>
+  </div>
+</template>

@@ -1,4 +1,4 @@
-# meteor-werewolves
+# Meteor Werewolves
 A Werewolves game web app developed with Meteor
 
 ## Install Meteor packages

@@ -9,6 +9,8 @@ export const Games = new Mongo.Collection('games');
 if (Meteor.isServer) {
   
   // This code only runs on the server
+  // TODO: should only publish the games owned by user or those
+  // where user is a player
   Meteor.publish('games', () => Games.find());
 
   Meteor.methods({

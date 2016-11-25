@@ -1,51 +1,69 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { ReactiveDict } from 'meteor/reactive-dict';
-
+import { ReactiveVar } from 'meteor/reactive-var';
+import { dashboard_games, dashboard_players, players } from '/imports/api/views';
+import { fetch, findOne } from '/imports/api/finder';
+import { subscribe } from '/imports/api/subscriber';
+import enums from '/imports/helpers/enums.js';
 import './dashboard.html';
 import './killmodal.js';
-import enums from '/imports/helpers/enums.js';
+import './revivemodal.js';
 
-import { Players } from '/imports/api/players.js';
-import { Games } from '/imports/api/games.js';
+const gameVar = new ReactiveVar(null);
+const playersVar = new ReactiveVar([]); 
 
 Template.dashboard.onCreated(function () {
-  let self = this;
-
-  Meteor.subscribe('games');
-  Meteor.subscribe('players');
+  const self = this;
+  const instance = Template.instance(); 
 
   this.gameCode = FlowRouter.getParam('gamecode');
 
-  this.selectedPlayer = null;
+  const gamesFilter = { find: {
+    owner: Meteor.userId(),
+    gameCode: this.gameCode
+  }};
+  const gamesHandle = subscribe(dashboard_games, gamesFilter, instance);
 
-  this.fetchGame = () => {
-    return Games.findOne({ gameCode: self.gameCode });
-  }
+  const playersFilter = { find: {
+    gameCode: this.gameCode
+  }};
+  const playersHandle = subscribe(dashboard_players, playersFilter, instance);
+
+  subscribe(players, playersFilter, instance);
+
+  instance.autorun(() => {
+    if (gamesHandle.ready()) {
+      gameVar.set(findOne(dashboard_games, gamesFilter));
+    }
+    if (playersHandle.ready()) {
+      playersVar.set(fetch(dashboard_players, playersFilter));
+    }
+  });
+  
 });
 
 Template.dashboard.helpers({
   game() {
-    return Template.instance().fetchGame();
+    return gameVar.get();
   },
   players() {
-    return Players.find({ gameCode: Template.instance().gameCode });
+    return playersVar.get();
   },
-  selectedPlayer() {
-    return Template.instance().selectedPlayer;
+  ready() {
+    return Template.instance().subscriptionsReady();
   }
 });
 
 Template.dashboard.events({
   'click .player-name'(event, instance) {
-    var id = $(event.target).attr('id'),
-      player = Players.findOne({ _id: id });
+    const id = $(event.target).attr('id');
+    const player = findOne(players, { find: { _id: id } });
 
     if (player.status !== enums.playerStatus.Dead) {
       Modal.show('killmodal', player, { keyboard: false });
     } else {
-      var game = Template.instance().fetchGame();
+      const game = gameVar.get();
       if (!game.witchUsedRevivePower) {
         Modal.show('revivemodal', player, { keyboard: false });
       }  
@@ -55,7 +73,7 @@ Template.dashboard.events({
     Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Finished);
   },
   'click #game-over'(event, instance) {
-    FlowRouter.go('/gameover/' + instance.gameCode);
+    FlowRouter.go(`/gameover/${instance.gameCode}`);
   },
   'click #go-home'() {
     FlowRouter.go('/');

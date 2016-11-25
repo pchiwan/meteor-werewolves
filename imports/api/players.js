@@ -1,14 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-
 import enums from '/imports/helpers/enums.js';
 
 export const Players = new Mongo.Collection('players');
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish('players', () => Players.find());
-
   Meteor.methods({
     'players.create'(gameCode) {
       if (!this.userId) {

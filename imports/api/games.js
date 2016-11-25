@@ -1,18 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-
-import enums from '/imports/helpers/enums.js';
 import { Players } from './players.js';
+import enums from '/imports/helpers/enums.js';
 
 export const Games = new Mongo.Collection('games');
 
 if (Meteor.isServer) {
-  
   // This code only runs on the server
-  // TODO: should only publish the games owned by user or those
-  // where user is a player
-  Meteor.publish('games', () => Games.find());
-
   Meteor.methods({
     'games.create'(selectedChars, wolfCount) {
       if (!this.userId) {

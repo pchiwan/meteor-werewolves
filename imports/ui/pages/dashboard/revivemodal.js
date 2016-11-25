@@ -1,7 +1,6 @@
 import { Template } from 'meteor/templating';
-
-import './revivemodal.html';
 import enums from '/imports/helpers/enums.js';
+import './revivemodal.html';
 
 Template.revivemodal.onCreated(function () {
   this.player = this.data;

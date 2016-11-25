@@ -1,46 +1,56 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-
-import './waitboard.html';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { dashboard_games, dashboard_players } from '/imports/api/views';
+import { fetch, findOne } from '/imports/api/finder';
+import { subscribe } from '/imports/api/subscriber';
 import enums from '/imports/helpers/enums.js';
+import './waitboard.html';
 
-import { Players } from '/imports/api/players.js';
-import { Games } from '/imports/api/games.js';
+const gameVar = new ReactiveVar(null);
+const playersVar = new ReactiveVar([]);
 
 Template.waitboard.onCreated(function () {
-  let self = this;
+  const self = this;
+  const instance = Template.instance();
   
-  Meteor.subscribe('games');
-  Meteor.subscribe('players');
-
   this.gameCode = FlowRouter.getParam('gamecode');
 
-  this.fetchPlayers = () => {
-    return Players.find({ gameCode: self.gameCode }).fetch();
-  }
+  const filter = { find: {
+    gameCode: this.gameCode
+  }};
+  const gamesHandle = subscribe(dashboard_games, filter, instance);
+  const playersHandle = subscribe(dashboard_players, filter, instance);
 
-  this.fetchGame = () => {
-    return Games.findOne({ gameCode: self.gameCode });
-  }  
+  instance.autorun(() => {
+    if (gamesHandle.ready()) {
+      gameVar.set(findOne(dashboard_games, filter));
+    }
+    if (playersHandle.ready()) {
+      playersVar.set(fetch(dashboard_players, filter));
+    }
+  });
 });
 
 Template.waitboard.helpers({
+  awaiting() {    
+    return playersVar.get().length < enums.minPlayers;    
+  },
   game() {
-    return Template.instance().fetchGame();
+    return gameVar.get();
   },
   players() {
-    return Template.instance().fetchPlayers();
+    return playersVar.get();
   },
-  awaiting() {
-    var players = Template.instance().fetchPlayers();
-    return players.length < enums.minPlayers;    
+  ready() {
+    return Template.instance().subscriptionsReady();
   }
 });
 
 Template.waitboard.events({
   'click #start-game'(event, instance) {
     // there should at least be 8 players to start the game       
-    var players = instance.fetchPlayers();
+    var players = playersVar.get();
         
     if (players.length >= enums.minPlayers) {
       // deal game cards
@@ -50,11 +60,11 @@ Template.waitboard.events({
       Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Live);
 
       // and navigate to deathboard
-      FlowRouter.go('/dashboard/' + instance.gameCode);
+      FlowRouter.go(`/dashboard/${instance.gameCode}`);
     }
   },
   'click #goto-dashboard'(event, instance) {
-    FlowRouter.go('/dashboard/' + instance.gameCode);
+    FlowRouter.go(`/dashboard/${instance.gameCode}`);
   },
   'click #go-home'(event) {
     FlowRouter.go('/');

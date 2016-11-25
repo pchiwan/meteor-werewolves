@@ -1,6 +1,5 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-
 import enums from '/imports/helpers/enums.js';
 
 FlowRouter.route('/', {

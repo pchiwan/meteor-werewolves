@@ -1,4 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
 
 import '/imports/ui/helpers/game.js';
 import '/imports/ui/helpers/player.js';
@@ -17,4 +19,10 @@ import '/imports/ui/responsive.scss';
 
 Accounts.ui.config({
    passwordSignupFields: 'USERNAME_ONLY' 
+});
+
+Template.layout.helpers({
+  username() {
+    return Meteor.user().username;
+  }
 });

@@ -4,7 +4,8 @@
     <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
-<template name="layout">    
+<template name="layout">
+    <p class="username"><i class="fa fa-user"></i> {{username}}</p>    
     <!-- this is the dynamic SPA container -->    
     {{> Template.dynamic template=main}}    
 </template>      

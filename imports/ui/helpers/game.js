@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-
 import enums from '/imports/helpers/enums.js';
 
 Template.registerHelper('gameIsCreated', status => !!status ? status === enums.gameStatus.Created : false);

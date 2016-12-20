@@ -36,6 +36,10 @@ meteor add peppelg:bootstrap-3-modal
 ```
 
 ## Deploy application to Digital Ocean's droplet
+
+Currently using kadira's [Meteor Up `mup`](https://github.com/kadirahq/meteor-up) to deploy the application with the command: 
 ```
-mupx deploy
+mup deploy
 ```
+
+Check instructions [here](https://github.com/kadirahq/meteor-up#server-configuration).

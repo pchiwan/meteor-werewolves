@@ -1,9 +1,6 @@
 import { Template } from 'meteor/templating';
-
-import './killmodal.html';
 import enums from '/imports/helpers/enums.js';
-
-import { Players } from '/imports/api/players.js';
+import './killmodal.html';
 
 Template.killmodal.onCreated(function () {
   this.player = this.data;

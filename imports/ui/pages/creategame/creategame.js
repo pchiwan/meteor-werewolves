@@ -2,48 +2,53 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
-
+import { dashboard_games } from '/imports/api/views';
+import { findOne } from '/imports/api/finder';
+import { subscribe } from '/imports/api/subscriber';
 import enums from '/imports/helpers/enums.js';
 import './creategame.html';
 
-import { Games } from '/imports/api/games.js';
+const state = new ReactiveDict();
+
+const gameCreated = (err, result) => {
+  var newgame = findOne(dashboard_games, { find: { _id: result } });
+  
+  // navigate to waitboard            
+  FlowRouter.go(`/waitboard/${newgame.gameCode}`);
+}
 
 Template.creategame.onCreated(function () {
-  Meteor.subscribe('games');
-    
-  this.state = new ReactiveDict();
-  this.state.set('specialChars', enums.roles.filter(x => x.hasSpecialPowers));
-  this.state.set('wolfCount', 1); 
+  const instance = Template.instance();
+
+  state.set('specialChars', enums.roles.filter(x => x.hasSpecialPowers));
+  state.set('wolfCount', 1); 
   
-  this.gameCreated = (err, result) => {
-    var newgame = Games.findOne({ _id: result });
-    
-    // navigate to waitboard            
-    FlowRouter.go('/waitboard/' + newgame.gameCode);
-  }
+  subscribe(dashboard_games, null, instance);
 });
 
 Template.creategame.helpers({
+  ready() {
+    return Template.instance().subscriptionsReady();
+  },
   specialChars() {
-    const instance = Template.instance();
-    return instance.state.get('specialChars');
+    return state.get('specialChars');
   }
 });
 
 Template.creategame.events({
   'click .special-char'(event, instance) {
-    var specialChars = instance.state.get('specialChars');
+    var specialChars = state.get('specialChars');
     var index = specialChars.findIndex((x) => {
       return x.name === this.name; 
     });
     specialChars[index].selected = !specialChars[index].selected;
-    instance.state.set('specialChars', specialChars);
+    state.set('specialChars', specialChars);
   },
   'click [name="wolves"]'(event, instance) {
-    instance.state.set('wolfCount', event.target.value)
+    state.set('wolfCount', event.target.value)
   },
   'click button#create-game'(event, instance) {
-    if (instance.state.get('wolfCount') === 0) {
+    if (state.get('wolfCount') === 0) {
       return; // can't play without wolves!
     }
      
@@ -54,7 +59,7 @@ Template.creategame.events({
     // create game in database
     Meteor.call('games.create', 
       selectedSpecialChars,
-      instance.state.get('wolfCount'),
+      state.get('wolfCount'),
       instance.gameCreated);                 
   }
 });

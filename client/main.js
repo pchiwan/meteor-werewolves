@@ -23,6 +23,6 @@ Accounts.ui.config({
 
 Template.layout.helpers({
   username() {
-    return Meteor.user().username;
+    return !!Meteor.user() ? Meteor.user().username : '';
   }
 });

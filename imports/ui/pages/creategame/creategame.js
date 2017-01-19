@@ -52,7 +52,7 @@ Template.creategame.events({
       return; // can't play without wolves!
     }
      
-    var selectedSpecialChars = instance.state.get('specialChars')
+    var selectedSpecialChars = state.get('specialChars')
       .filter(x => x.selected)
       .map(x => x.name); 
           

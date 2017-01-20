@@ -60,6 +60,6 @@ Template.creategame.events({
     Meteor.call('games.create', 
       selectedSpecialChars,
       state.get('wolfCount'),
-      instance.gameCreated);                 
+      gameCreated);                 
   }
 });

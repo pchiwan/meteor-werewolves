@@ -30,6 +30,10 @@ input[type=text]{
   align-items: center;
 }
 
+.space-between{
+  justify-content: space-between;
+}
+
 .btn{
   font-size: 18px;
   min-width: 150px;

@@ -36,7 +36,7 @@ Template.creategame.helpers({
 });
 
 Template.creategame.events({
-  'click .special-char'(event, instance) {
+  'click .character'(event, instance) {
     var specialChars = state.get('specialChars');
     var index = specialChars.findIndex((x) => {
       return x.name === this.name; 

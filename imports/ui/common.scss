@@ -5,7 +5,7 @@
   margin-top: 10px;
 }
 
-.special-char{
+.character{
   padding: 4px;
   margin-bottom: 4px;
   margin-top: 4px;
@@ -23,6 +23,10 @@
     color: crimson;
   }
   
+  &.not-clickable{
+    cursor: default;
+  }
+
   .card, .player-name{
     font-size: 22px; 
   }

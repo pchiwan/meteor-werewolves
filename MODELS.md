@@ -16,8 +16,6 @@ Represents a game of Werewolves of Miller's Hollow.
 * **status**: Game status (Created | Live | Finished)
 * **creationDate**: Game's creation date
 * **modifiedDate**: Game's last modification date
-* **dayNightCycles**: Counter of day/night cycles (just informative)
-* **currentPhase**: Identifies current game phase (Day | Night) 
 * **victory**: True if villagers won the game, false otherwise (undefined if game is not Finished)
 * **witchUsedRevivePower**: True if witch used her revive power in the game already, false otherwise
 * **witchUsedKillPower**: True if witch used her kill power in the game already, false otherwise
@@ -53,7 +51,7 @@ Add properties:
 Represents a player who is taking part of a `Game`.
 
 * **_id**: MongoDB's unique identifier
-* **userI**: User ID (from `users` collection)
+* **userId**: User ID (from `users` collection)
 * **name**: User name
 * **gameCode**: Alphanumeric game identifier
 * **role**: Character role of the player, (*) indicates that it has special powers
@@ -82,7 +80,8 @@ Add roles:
 * _cupid_: Cupid (*)
 
 Add properties:
-* **isLover**: True if player was chosen as a lover by Cupid at beginning of game, false otherwise
+* **isLover**: True if player is chosen as a lover by Cupid at beginning of game, false otherwise
+* **isSheriff**: True if player is elected as sheriff by the villagers
 * **killedBy**: Provides information on who (which role) killed the player (Huntsman | Villager | Werewolf | Witch)
 
 ## User

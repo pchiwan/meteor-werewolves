@@ -1,6 +1,5 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-import enums from '/imports/helpers/enums.js';
 
 FlowRouter.route('/', {
   action: () => {
@@ -41,6 +40,12 @@ FlowRouter.route('/playerboard/:gamecode', {
 FlowRouter.route('/waitboard/:gamecode', {
   action: () => {
     BlazeLayout.render('layout', { main: 'waitboard' });
+  }
+});
+
+FlowRouter.route('/playergames', {
+  action: () => {
+    BlazeLayout.render('layout', { main: 'playergames' });
   }
 });
 

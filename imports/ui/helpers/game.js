@@ -7,3 +7,14 @@ Template.registerHelper('gameIsStarted', status => !!status ? status === enums.g
 Template.registerHelper('gameIsFinished', status => !!status ? status === enums.gameStatus.Finished : false);
 Template.registerHelper('userOwnsGame', game => !!game ? game.owner === Meteor.userId() : false);
 Template.registerHelper('villagersWon', game => !!game ? !!game.victory : false);
+Template.registerHelper('gameStatus', status => {
+  switch (status) {
+    case enums.gameStatus.Created:
+    return 'created';
+    case enums.gameStatus.Live:
+    return 'live';
+    case enums.gameStatus.Finished:
+    return 'finished';
+  }
+  return '';
+})

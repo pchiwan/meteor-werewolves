@@ -37,6 +37,13 @@ export const players = {
   options: {}
 }
 
+export const games = {
+  name: 'games',
+  collection: () => Games,
+  find: {},
+  options: {}
+}
+
 export default views = {
   dashboard_games,
   dashboard_players,

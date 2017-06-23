@@ -1,0 +1,33 @@
+<template name="playergames">  
+  <div class="container" id="playergames">
+    <h1 class="text-center title">Your games</h1>
+    <div class="player-games">
+      <br>
+      <div class="row vertical-align">
+        <div class="col-md-4 col-sm-3 col-xs-3">
+          Code
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6 creation-date">
+          Creation Date
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-3 game-status">
+          Status
+        </div>
+      </div>
+      <hr>
+      {{#each games}}
+      <div class="row vertical-align game {{gameStatus status}}" id="{{gameCode}}">
+        <div class="col-md-4 col-sm-3 col-xs-3">
+          {{gameCode}}
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6 creation-date">
+          {{printDate creationDate}}
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-3 game-status">
+          {{gameStatus status}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div> 
+</template>

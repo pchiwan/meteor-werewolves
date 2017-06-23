@@ -3,6 +3,10 @@
 @import url(https://fonts.googleapis.com/css?family=Jolly+Lodger);
 @import url(https://fonts.googleapis.com/css?family=Amatic+SC);
 
+html, body, #__blaze-root{
+  height: 100%;
+}
+
 body{
   background-image: url(/images/stardust.png);
   font-family: Roboto;
@@ -51,7 +55,11 @@ input[type=text]{
 }
 
 .username{
-  margin: 10px 20px 0 0;
   text-align: right;
   font-size: 16px;
+}
+
+.username p{
+  margin: 0;
+  padding: 10px 20px 0 0;
 }

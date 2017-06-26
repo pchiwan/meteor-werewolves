@@ -1,10 +1,26 @@
-db.players.insert({ _id: 'abc01', userId: '4vSb5cDscKqa5wwuq', name: 'garrus',    gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc02', userId: 'HepCX3XuDwSbusMMR', name: 'alenko',    gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc03', userId: 'zGAQaQzXW5GXAiJjK', name: 'talizorah', gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc04', userId: 'eLRsvNwH6Pi9Gcixn', name: 'liara',     gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc05', userId: 'TyTF4juYvuLjN8c9E', name: 'ashley',    gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc06', userId: 'SRvN8ncQwzXH4bxw8', name: 'wrex',      gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc07', userId: 'Qt2gDXo5iTF7s75xi', name: 'miranda',   gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc08', userId: 'cGxpwx5xXmqZmnLk4', name: 'legion',    gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc09', userId: 'GMCQhYrNHDrNArDfW', name: 'mordin',    gameCode: 'IOIVMV', role: null, status: 1 });
-db.players.insert({ _id: 'abc10', userId: '7wSoC8wq4EKwQuGLx', name: 'thane',     gameCode: 'IOIVMV', role: null, status: 1 });
+// USERS
+db.users.insert({ _id: '4vSb5cDscKqa5wwuq', name: 'garrus',    role: null });
+db.users.insert({ _id: 'HepCX3XuDwSbusMMR', name: 'alenko',    role: null });
+db.users.insert({ _id: 'zGAQaQzXW5GXAiJjK', name: 'talizorah', role: null });
+db.users.insert({ _id: 'eLRsvNwH6Pi9Gcixn', name: 'liara',     role: null });
+db.users.insert({ _id: 'TyTF4juYvuLjN8c9E', name: 'ashley',    role: null });
+db.users.insert({ _id: 'SRvN8ncQwzXH4bxw8', name: 'wrex',      role: null });
+db.users.insert({ _id: 'Qt2gDXo5iTF7s75xi', name: 'miranda',   role: null });
+db.users.insert({ _id: 'cGxpwx5xXmqZmnLk4', name: 'legion',    role: null });
+db.users.insert({ _id: 'GMCQhYrNHDrNArDfW', name: 'mordin',    role: null });
+db.users.insert({ _id: '7wSoC8wq4EKwQuGLx', name: 'thane',     role: null });
+
+// GAME
+db.games.insert({ _id: 'game01', owner: '', gameCode: 'IOIVMV', specialChars: ['fortuneteller', 'witch', 'hunter'], wolfCount: 2, creationDate: ISODate("2017-06-23T17:59:00.007Z"), modifiedDate: ISODate("2017-06-23T17:59:00.007Z") });
+
+// PLAYERS
+db.players.insert({ _id: 'player01', userId: '4vSb5cDscKqa5wwuq', name: 'garrus',    gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player02', userId: 'HepCX3XuDwSbusMMR', name: 'alenko',    gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player03', userId: 'zGAQaQzXW5GXAiJjK', name: 'talizorah', gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player04', userId: 'eLRsvNwH6Pi9Gcixn', name: 'liara',     gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player05', userId: 'TyTF4juYvuLjN8c9E', name: 'ashley',    gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player06', userId: 'SRvN8ncQwzXH4bxw8', name: 'wrex',      gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player07', userId: 'Qt2gDXo5iTF7s75xi', name: 'miranda',   gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player08', userId: 'cGxpwx5xXmqZmnLk4', name: 'legion',    gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player09', userId: 'GMCQhYrNHDrNArDfW', name: 'mordin',    gameCode: 'IOIVMV', role: null, status: 1 });
+db.players.insert({ _id: 'player10', userId: '7wSoC8wq4EKwQuGLx', name: 'thane',     gameCode: 'IOIVMV', role: null, status: 1 });

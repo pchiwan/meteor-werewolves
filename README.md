@@ -33,7 +33,7 @@ meteor
 ## Future improvements
 
 * Add ambient sounds to the game (wolf howl, creepy night sound, rooster’s crowing, etc.)
-* Add more special characters to the game (Cupid, Captain, Thief, etc.)
+* Add more special characters to the game (Cupid, Sheriff, Thief, etc.)
 * Add more features to the Moderator’s dashboard
 * Add feature to allow players to vote for the next player to be killed off during the day phase through their dashboard
 * Add score boards & statistics

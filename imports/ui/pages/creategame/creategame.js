@@ -36,7 +36,7 @@ Template.creategame.helpers({
 });
 
 Template.creategame.events({
-  'click .special-char'(event, instance) {
+  'click .character'(event, instance) {
     var specialChars = state.get('specialChars');
     var index = specialChars.findIndex((x) => {
       return x.name === this.name; 
@@ -52,7 +52,7 @@ Template.creategame.events({
       return; // can't play without wolves!
     }
      
-    var selectedSpecialChars = instance.state.get('specialChars')
+    var selectedSpecialChars = state.get('specialChars')
       .filter(x => x.selected)
       .map(x => x.name); 
           
@@ -60,6 +60,6 @@ Template.creategame.events({
     Meteor.call('games.create', 
       selectedSpecialChars,
       state.get('wolfCount'),
-      instance.gameCreated);                 
+      gameCreated);                 
   }
 });

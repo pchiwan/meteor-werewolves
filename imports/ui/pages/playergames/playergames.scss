@@ -1,0 +1,17 @@
+
+.player-games{
+  .creation-date, .game-status{
+    justify-content: center;
+  }
+
+  .game{
+    padding: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+
+    .game-status{
+      text-transform: uppercase;
+    }
+  }
+}

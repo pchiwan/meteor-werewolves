@@ -7,3 +7,14 @@ Template.registerHelper('gameIsStarted', status => !!status ? status === gameSta
 Template.registerHelper('gameIsFinished', status => !!status ? status === gameStatus.Finished : false);
 Template.registerHelper('userOwnsGame', game => !!game ? game.owner === Meteor.userId() : false);
 Template.registerHelper('townsfolkWon', game => !!game ? !!game.victory : false);
+Template.registerHelper('gameStatus', status => {
+  switch (status) {
+    case gameStatus.Created:
+    return 'created';
+    case gameStatus.Live:
+    return 'live';
+    case gameStatus.Finished:
+    return 'finished';
+  }
+  return '';
+})

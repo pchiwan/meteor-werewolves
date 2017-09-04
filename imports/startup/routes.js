@@ -43,10 +43,16 @@ FlowRouter.route('/waitboard/:gamecode', {
   }
 });
 
+FlowRouter.route('/playergames', {
+  action: () => {
+    BlazeLayout.render('layout', { main: 'playergames' });
+  }
+});
+
 FlowRouter.route('/admin', {
   action: () => {
     BlazeLayout.render('layout', { main: 'admin' });
-  } 
+  }
 });
 
 FlowRouter.notFound = {    

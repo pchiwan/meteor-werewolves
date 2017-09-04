@@ -30,7 +30,7 @@ Template.dashboard.onCreated(function () {
   }};
   const playersHandle = subscribe(dashboard_players, playersFilter, instance);
 
-  subscribe(players, playersFilter, instance);
+  // subscribe(players, playersFilter, instance);
 
   instance.autorun(() => {
     if (gamesHandle.ready()) {
@@ -40,7 +40,6 @@ Template.dashboard.onCreated(function () {
       playersVar.set(fetch(dashboard_players, playersFilter));
     }
   });
-  
 });
 
 Template.dashboard.helpers({

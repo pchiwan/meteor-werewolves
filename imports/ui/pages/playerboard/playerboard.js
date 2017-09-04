@@ -6,12 +6,13 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { playerboard_games, players } from '/imports/api/views'; 
 import { findOne } from '/imports/api/finder';
 import { subscribe } from '/imports/api/subscriber';
-import enums from '/imports/helpers/enums.js';
+import { roles } from '/imports/helpers/enums.js';
 import './playerboard.html';
 
 const state = new ReactiveDict();
 const gameVar = new ReactiveVar(null);
 const playerVar = new ReactiveVar([]);
+const roleTitles = {}
 
 const getCardFlipped = () => {
   return state.get('cardFlipped');
@@ -22,6 +23,8 @@ Template.playerboard.onCreated(function () {
   this.gameCode = FlowRouter.getParam('gamecode');
 
   state.set('cardFlipped', false);
+
+  roles.forEach(r => roleTitles[r.name] = r.title);
 
   const gamesFilter = { find: { 
     gameCode: this.gameCode 
@@ -53,6 +56,9 @@ Template.playerboard.helpers({
   }, 
   player() {
     return playerVar.get();
+  },
+  roleTitle() {
+    return roleTitles[playerVar.get().role];
   },
   ready() {
     return Template.instance().subscriptionsReady();

@@ -2,6 +2,7 @@
   <div class="container" id="player-board">
     <h1 class="text-center title">Player board</h1>
     <hr>
+    {{#if ready}}
     <div class="text-center row">
       <h1 class="user">{{player.name}}</h1>
       {{#if gameIsFinished game.status}}
@@ -24,17 +25,19 @@
           <div class="card col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-3 col-xs-6">
             {{#if cardFlipped}}
             <img src="/images/card-back.png" alt="Townsfolk" />
-            {{else}}
+            {{else}}            
             <img src="/images/card-{{player.role}}.png" title="{{player.role}}" alt="{{player.role}}" />
+            <h3>{{roleTitle}}</h3>
             {{/if}}                    
           </div>
           <div class="clearfix"></div> 
-          <h3>(click on card to flip it)</h3>
+          <h4>(click on card to flip it)</h4>
           {{/if}}
         {{else}}
         <h2>Waiting for the game to start...</h2>
         {{/if}}
       {{/if}}
-    </div>    
+    </div>
+    {{/if}}
   </div>
 </template>

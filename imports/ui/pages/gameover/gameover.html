@@ -1,10 +1,11 @@
 <template name="gameover">
+  {{#if ready}}
   <div class="container" id="gameover">
     <h1 class="text-center title">Game over</h1>
     <hr>
     <div class="text-center">
       <h2 class="crimson">Game {{game.gameCode}} is over!</h2>
-      <h3>{{#if villagersWon game}}Villagers{{else}}Werewolves{{/if}} won!</h3>
+      <h3>{{#if townsfolkWon game}}Townsfolk{{else}}Werewolves{{/if}} won!</h3>
     </div>
     <hr>
     <div class="logged-players">
@@ -26,4 +27,5 @@
       <button id="go-home" class="btn btn-primary">Go home!</button>
     </p>
   </div>
+  {{/if}}
 </template>

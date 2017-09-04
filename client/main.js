@@ -1,5 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 
 import '/imports/ui/helpers/game.js';
@@ -28,3 +29,11 @@ Template.layout.helpers({
     return !!Meteor.user() ? Meteor.user().username : '';
   }
 });
+
+Template.layout.events({
+  'click .logout'(event) {
+    Meteor.logout(() => {
+      FlowRouter.go('/');
+    });
+  }
+})

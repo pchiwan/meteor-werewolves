@@ -49,6 +49,12 @@ FlowRouter.route('/playergames', {
   }
 });
 
+FlowRouter.route('/admin', {
+  action: () => {
+    BlazeLayout.render('layout', { main: 'admin' });
+  }
+});
+
 FlowRouter.notFound = {    
   action: function() {
     BlazeLayout.render('layout', { main: '404' });

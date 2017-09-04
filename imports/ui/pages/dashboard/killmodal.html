@@ -6,7 +6,40 @@
           <h4 class="modal-title">Eliminate player?</h4>
         </div>
         <div class="modal-body">
-          <label for="name">{{name}}</label>
+          <label for="name"><strong>{{player.name}}</strong></label>
+          <div class="killer-list">
+            <label for="killer">Identify source of death:</label>
+            <ul>
+              <li>
+                <label for="townsfolk">
+                  <input type="radio" name="killer" id="townsfolk" value="townsfolk" />
+                  Angry mob (townsfolk)
+                </label>
+              </li>
+              {{#if showHuntsman}}
+              <li>
+                <label for="huntsman">
+                  <input type="radio" name="killer" id="huntsman" value="huntsman" />
+                  Huntsman
+                </label> 
+              </li>
+              {{/if}}
+              {{#if showWitch}}
+              <li>
+                <label for="witch">
+                  <input type="radio" name="killer" id="witch" value="witch" />
+                  Witch
+                </label>
+              </li>
+              {{/if}}
+              <li>
+                <label for="werewolf">
+                  <input type="radio" name="killer" id="werewolf" value="werewolf" checked />
+                  Werewolves
+                </label>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="killButton">Kill</button>

@@ -5,7 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { playerboard_games, playerboard_players } from '/imports/api/views';
 import { count, findOne } from '/imports/api/finder';
 import { subscribe } from '/imports/api/subscriber';
-import enums from '/imports/helpers/enums.js';
+import { gameStatus, maxPlayers } from '/imports/helpers/enums.js';
 import './joingame.html';
 import './joingame.scss';
 
@@ -76,7 +76,7 @@ Template.joingame.events({
         // + the game is already full (current number of players = max),
         // + or the game is live
         // then kick player out
-        if (game.status === enums.gameStatus.Live || total === enums.maxPlayers) {
+        if (game.status === gameStatus.Live || total === maxPlayers) {
           state.set('hasErrors', true);
           state.set('errorMessage', 'You can not join this game. Please use a different code.');
           return false;

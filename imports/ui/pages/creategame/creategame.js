@@ -5,7 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { dashboard_games } from '/imports/api/views';
 import { findOne } from '/imports/api/finder';
 import { subscribe } from '/imports/api/subscriber';
-import enums from '/imports/helpers/enums.js';
+import { roles } from '/imports/helpers/enums.js';
 import './creategame.html';
 
 const state = new ReactiveDict();
@@ -20,7 +20,7 @@ const gameCreated = (err, result) => {
 Template.creategame.onCreated(function () {
   const instance = Template.instance();
 
-  state.set('specialChars', enums.roles.filter(x => x.hasSpecialPowers));
+  state.set('specialChars', roles.filter(x => x.hasSpecialPowers));
   state.set('wolfCount', 1); 
   
   subscribe(dashboard_games, null, instance);

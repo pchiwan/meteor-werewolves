@@ -1,13 +1,12 @@
 #login-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: 45px;
   
   .dropdown-menu {
     display: block;
     position: relative;
-    height: 245px;
+    height: 180px;
     margin-left: auto;
     margin-right: auto;
     float: none;
@@ -15,6 +14,7 @@
 
   #login-dropdown-list {
     display: block;
+    margin: 0 auto;
     width: 90%;
   }
 
@@ -26,12 +26,15 @@
 #start-screen{
   margin: 0 auto;
   text-align: center;
-    
+}
+
+#start-screen, #login-screen {
   .title{
     font-family: 'Jolly Lodger', serif;
     font-size: 70px;
     color: floralwhite;
     text-shadow: 3px 3px 10px crimson;
     font-weight: normal;
+    margin-bottom: 50px;
   }
 }

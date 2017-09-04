@@ -4,7 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { dashboard_games, dashboard_players } from '/imports/api/views';
 import { fetch, findOne } from '/imports/api/finder';
 import { subscribe } from '/imports/api/subscriber';
-import enums from '/imports/helpers/enums.js';
+import { minPlayers, gameStatus } from '/imports/helpers/enums.js';
 import './waitboard.html';
 
 const gameVar = new ReactiveVar(null);
@@ -34,7 +34,7 @@ Template.waitboard.onCreated(function () {
 
 Template.waitboard.helpers({
   awaiting() {    
-    return playersVar.get().length < enums.minPlayers;    
+    return playersVar.get().length < minPlayers;    
   },
   game() {
     return gameVar.get();
@@ -52,12 +52,12 @@ Template.waitboard.events({
     // there should at least be 8 players to start the game       
     var players = playersVar.get();
         
-    if (players.length >= enums.minPlayers) {
+    if (players.length >= minPlayers) {
       // deal game cards
       Meteor.call('games.dealCards', instance.gameCode, players);
 
       // update game
-      Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Live);
+      Meteor.call('games.updateStatus', instance.gameCode, gameStatus.Live);
 
       // and navigate to deathboard
       FlowRouter.go(`/dashboard/${instance.gameCode}`);

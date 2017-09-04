@@ -5,7 +5,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { dashboard_games, dashboard_players, players } from '/imports/api/views';
 import { fetch, findOne } from '/imports/api/finder';
 import { subscribe } from '/imports/api/subscriber';
-import enums from '/imports/helpers/enums.js';
+import { gameStatus, playerStatus } from '/imports/helpers/enums.js';
 import './dashboard.html';
 import './killmodal.js';
 import './revivemodal.js';
@@ -59,17 +59,17 @@ Template.dashboard.events({
     const id = $(event.target).attr('id');
     const player = findOne(players, { find: { _id: id } });
 
-    if (player.status !== enums.playerStatus.Dead) {
-      Modal.show('killmodal', player, { keyboard: false });
+    const game = gameVar.get();
+    if (player.status !== playerStatus.Dead) {
+      Modal.show('killmodal', { game, player }, { keyboard: false });
     } else {
-      const game = gameVar.get();
       if (!game.witchUsedRevivePower) {
         Modal.show('revivemodal', player, { keyboard: false });
       }  
     }
   },
   'click #end-game'(event, instance) {
-    Meteor.call('games.updateStatus', instance.gameCode, enums.gameStatus.Finished);
+    Meteor.call('games.updateStatus', instance.gameCode, gameStatus.Finished);
   },
   'click #game-over'(event, instance) {
     FlowRouter.go(`/gameover/${instance.gameCode}`);

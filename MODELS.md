@@ -16,7 +16,7 @@ Represents a game of Werewolves of Miller's Hollow.
 * **status**: Game status (Created | Live | Finished)
 * **creationDate**: Game's creation date
 * **modifiedDate**: Game's last modification date
-* **victory**: True if villagers won the game, false otherwise (undefined if game is not Finished)
+* **victory**: True if townsfolk won the game, false otherwise (undefined if game is not Finished)
 * **witchUsedRevivePower**: True if witch used her revive power in the game already, false otherwise
 * **witchUsedKillPower**: True if witch used her kill power in the game already, false otherwise
 
@@ -55,13 +55,16 @@ Represents a player who is taking part of a `Game`.
 * **name**: User name
 * **gameCode**: Alphanumeric game identifier
 * **role**: Character role of the player, (*) indicates that it has special powers
-  * _villager_: Villager, lives in fear of wolves and trusts no one
+  * _townsfolk_: Townsfolk, lives in fear of wolves and trusts no one
   * _werewolf_: Werewolf, kills by night, deceives by day
   * _fortuneteller_: Fortune teller, reveals a player's true identity (*)
   * _huntsman_: Huntsman, kills a player when killed (*)
   * _littlegirl_: Little girl, can peek during night phase (*)
   * _witch_: Witch, can kill and revive any player once during a game (*)
+  * _cupid_: Cupid, makes any two people fall instantly in love 
 * **status**: Player status (Alive | Dead)
+* **isLover**: True if player was chosen as a lover by Cupid at beginning of game, false otherwise
+* **killedBy**: Provides information on who (which role) killed the player (huntsman | townsfolk | werewolf | witch)
 
 Example:
 ```
@@ -70,19 +73,14 @@ Example:
     "userId" : "zGAQaQzXW5GXAiJjK",
     "name" : "talizorah",
     "gameCode" : "IOIVMV",
-    "role" : "villager",
+    "role" : "townsfolk",
     "status" : 2
 }
 ```
 
 ### _Extension proposal_
-Add roles:
-* _cupid_: Cupid (*)
-
 Add properties:
-* **isLover**: True if player is chosen as a lover by Cupid at beginning of game, false otherwise
 * **isSheriff**: True if player is elected as sheriff by the villagers
-* **killedBy**: Provides information on who (which role) killed the player (Huntsman | Villager | Werewolf | Witch)
 
 ## User
 Meteor's default User definition (as per using `accounts-ui` package)

@@ -17,9 +17,5 @@ Template.startscreen.events({
   },
   'click #join-game'(event) {
     FlowRouter.go('/joingame');
-  },
-  'click #logout'(event) {
-    Meteor.logout();
-    FlowRouter.go('/');
   }
 });

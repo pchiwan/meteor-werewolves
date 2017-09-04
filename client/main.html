@@ -5,7 +5,11 @@
 </head>
 
 <template name="layout">
-    <p class="username"><i class="fa fa-user"></i> {{username}}</p>    
+    {{#if username}}
+    <p class="username">
+        <i class="fa fa-user"></i> {{username}} &nbsp; <i class="fa fa-sign-out logout"></i>
+    </p>
+    {{/if}}
     <!-- this is the dynamic SPA container -->    
     {{> Template.dynamic template=main}}    
 </template>      

@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import enums from '/imports/helpers/enums.js';
+import { playerStatus } from '/imports/helpers/enums.js';
 
 export const Players = new Mongo.Collection('players');
 
@@ -17,7 +17,7 @@ if (Meteor.isServer) {
         name: Meteor.user().username,
         gameCode: gameCode,
         role: null,
-        status: enums.playerStatus.Alive
+        status: playerStatus.Alive
       };
 
       Players.insert(player);
@@ -28,16 +28,16 @@ if (Meteor.isServer) {
       }
 
       Players.update(playerId, {
-        $set: { role: role }
+        $set: { role }
       });
     },
-    'players.updateStatus'(playerId, status) {
+    'players.updateStatus'(playerId, status, killedBy) {
       if (!this.userId) {
         throw new Meteor.Error('not-authorized');
       }
 
       Players.update(playerId, {
-        $set: { status: status }
+        $set: { status, killedBy }
       });
     }
   });

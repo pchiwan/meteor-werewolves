@@ -6,7 +6,7 @@ module.exports = {
     one: {
       host: '146.185.156.178',
       username: 'root',
-      // pem: '/home/user/.ssh/id_rsa', // mup doesn't support '~' alias for home directory
+      pem: '/Users/pchiwan/.ssh/id_rsa', // mup doesn't support '~' alias for home directory
       // password: 'password',
       // or leave blank to authenticate using ssh-agent
     }

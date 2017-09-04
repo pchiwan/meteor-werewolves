@@ -3,10 +3,10 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "deploy": "eval $(ssh-agent) && mup deploy && ssh-agent -k"
+    "deploy": "eval $(ssh-agent) && cd .deploy && mup deploy --verbose && ssh-agent -k"
   },
   "dependencies": {
-    "babel-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
     "bcrypt": "^1.0.2",
     "meteor-node-stubs": "~0.2.0"
   }

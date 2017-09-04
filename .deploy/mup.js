@@ -1,4 +1,4 @@
-// check instructions on how to configure this file at https://github.com/kadirahq/meteor-up
+// check instructions on how to configure this file at http://meteor-up.com/docs.html
 
 module.exports = {
   // Server authentication info
@@ -12,31 +12,44 @@ module.exports = {
     }
   },
 
-  meteor: {
+  app: {
     // Application name (No spaces)
     name: 'meteor-werewolves',
 
     // Location of app (local directory)
-    path: '.',
+    path: '../',
 
     // List of servers to deploy, from the 'servers' list
     servers: {
       one: {}
     },
 
+     buildOptions: {
+      serverOnly: true,
+    },
+
     // Configure environment
     env: {
       ROOT_URL: 'http://146.185.156.178',
-      MONGO_URL: 'mongodb://localhost/meteor-werewolvese'
+      MONGO_URL: 'mongodb://localhost/meteor-werewolves'
     },
     
     // Meteor Up checks if the app comes online just after the deployment
     // before mup checks that, it will wait for no. of seconds configured below
-    deployCheckWaitTime: 120
+    deployCheckWaitTime: 120,
+
+    docker: {
+      // change to 'kadirahq/meteord' if your app is using Meteor 1.3 or older
+      image: 'abernix/meteord:base',
+    },
+
+    // Show progress bar while uploading bundle to server
+    // You might need to disable it on CI servers
+    enableUploadProgressBar: true
   },
 
   mongo: {
-    oplog: true,
+    version: '3.4.1',
     port: 27017,
     servers: {
       one: {},

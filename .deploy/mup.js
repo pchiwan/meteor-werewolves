@@ -30,10 +30,10 @@ module.exports = {
 
     // Configure environment
     env: {
-      ROOT_URL: 'http://146.185.156.178',
+      ROOT_URL: 'https://146.185.156.178',
       MONGO_URL: 'mongodb://localhost/meteor-werewolves'
     },
-    
+
     // Meteor Up checks if the app comes online just after the deployment
     // before mup checks that, it will wait for no. of seconds configured below
     deployCheckWaitTime: 120,
@@ -48,11 +48,18 @@ module.exports = {
     enableUploadProgressBar: true
   },
 
+  ssl: {
+    autogenerate: {
+      email: 'silvia.murblanch@gmail.com',
+      domains: 'werewolves.astrolab.io'
+    }
+  },
+
   mongo: {
     version: '3.4.1',
     port: 27017,
     servers: {
       one: {},
     }
-  }  
+  }
 };

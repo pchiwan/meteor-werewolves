@@ -11,11 +11,11 @@ import './killmodal.js';
 import './revivemodal.js';
 
 const gameVar = new ReactiveVar(null);
-const playersVar = new ReactiveVar([]); 
+const playersVar = new ReactiveVar([]);
 
 Template.dashboard.onCreated(function () {
   const self = this;
-  const instance = Template.instance(); 
+  const instance = Template.instance();
 
   this.gameCode = FlowRouter.getParam('gamecode');
 
@@ -65,7 +65,7 @@ Template.dashboard.events({
     } else {
       if (!game.witchUsedRevivePower) {
         Modal.show('revivemodal', player, { keyboard: false });
-      }  
+      }
     }
   },
   'click #end-game'(event, instance) {

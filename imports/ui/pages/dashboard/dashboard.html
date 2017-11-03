@@ -5,13 +5,13 @@
     {{#if ready}}
       {{#if userOwnsGame game}}
         {{#if gameIsStarted game.status}}
-        <h2 class="text-center">Game {{game.gameCode}} is on!</h2>        
+        <h2 class="text-center">Game {{game.gameCode}} is on!</h2>
         <br>
         <div class="logged-players">
           {{#each players}}
-          <div class="row vertical-align special-char {{#if playerIsDead status}}is-dead{{/if}}">
+          <div class="row vertical-align character {{#if playerIsDead status}}is-dead{{/if}}">
             <div class="card col-md-2 col-sm-2 col-xs-4">
-              <img src="/images/card-{{role}}.png" alt="{{role}}" />                        
+              <img src="/images/card-{{role}}.png" alt="{{role}}" />
             </div>
             <div class="player-name col-md-10 col-sm-10 col-xs-8" id="{{_id}}">
               {{name}}
@@ -41,8 +41,8 @@
         <h1>Game {{game.gameCode}} does not belong to you!</h1>
         <br><br><br><br>
         <button id="go-home" class="btn btn-primary">Go home!</button>
-      </div> 
+      </div>
       {{/if}}
     {{/if}}
-  </div>     
+  </div>
 </template>

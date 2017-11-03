@@ -11,6 +11,12 @@
             <label for="killer">Identify source of death:</label>
             <ul>
               <li>
+                <label for="werewolf">
+                  <input type="radio" name="killer" id="werewolf" value="werewolf" checked />
+                  Werewolves
+                </label>
+              </li>
+              <li>
                 <label for="townsfolk">
                   <input type="radio" name="killer" id="townsfolk" value="townsfolk" />
                   Angry mob (townsfolk)
@@ -21,7 +27,7 @@
                 <label for="huntsman">
                   <input type="radio" name="killer" id="huntsman" value="huntsman" />
                   Huntsman
-                </label> 
+                </label>
               </li>
               {{/if}}
               {{#if showWitch}}
@@ -32,12 +38,6 @@
                 </label>
               </li>
               {{/if}}
-              <li>
-                <label for="werewolf">
-                  <input type="radio" name="killer" id="werewolf" value="werewolf" checked />
-                  Werewolves
-                </label>
-              </li>
             </ul>
           </div>
         </div>

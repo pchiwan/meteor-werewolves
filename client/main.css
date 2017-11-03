@@ -13,6 +13,7 @@ body{
   color: white;
   font-size: 20px;
   margin-bottom: 40px;
+  overflow-x: hidden;
 }
 
 img{
@@ -47,7 +48,7 @@ input[type=text]{
 .modal-title, .modal-body{
   color: black;
   text-align: center;
-  font-weight: bold;  
+  font-weight: bold;
 }
 
 .modal-footer{

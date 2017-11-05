@@ -38,9 +38,8 @@ module.exports = {
     // before mup checks that, it will wait for no. of seconds configured below
     deployCheckWaitTime: 120,
 
-    docker: {
-      // change to 'kadirahq/meteord' if your app is using Meteor 1.3 or older
-      image: 'abernix/meteord:base',
+    docker: {      
+      image: 'abernix/meteord:node-8.4.0-base',
     },
 
     // Show progress bar while uploading bundle to server

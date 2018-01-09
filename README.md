@@ -14,7 +14,7 @@ The _Meteor Werewolves_ web app only eliminates the necessity of having the game
 * Player deaths will be notified through their smartphones, next revealing their identities
 
 ## Play the game
-You can play the game with your friends at: [werewolves.astrolab.io](http://werewolves.astrolab.io). It's totally free!
+You can play the game with your friends at: [meteorwerewolv.es](https://meteorwerewolv.es). It's totally free!
 
 ## Play with the code
 Once you've cloned or downloaded the repository you'll need to install Meteor on your machine, so head [here](https://www.meteor.com/install) for instructions and do so!

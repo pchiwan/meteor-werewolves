@@ -31,22 +31,17 @@ module.exports = {
     // Configure environment
     env: {
       ROOT_URL: 'https://209.250.244.217',
-      MONGO_URL: 'mongodb://localhost/meteor-werewolves'
-    },
-    
-    ssl: {
-      autogenerate: {
-        email: 'silvia.murblanch@gmail.com',
-        domains: 'meteorwerewolv.es,www.meteorwerewolv.es'
-      }
+      MONGO_URL: 'mongodb://localhost/meteor-werewolves',
+      PORT: 3000
     },
 
     // Meteor Up checks if the app comes online just after the deployment
     // before mup checks that, it will wait for no. of seconds configured below
     deployCheckWaitTime: 120,
 
-    docker: {      
-      image: 'abernix/meteord:node-8.4.0-base',
+    docker: {
+      image: 'abernix/spaceglue:node-8.9.3-builddeps',
+      imagePort: 3000
     },
 
     // Show progress bar while uploading bundle to server

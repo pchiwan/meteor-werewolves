@@ -13,23 +13,6 @@ The _Meteor Werewolves_ web app only eliminates the necessity of having the game
 * The Moderator will have a special dashboard with which she will update the status of the game
 * Player deaths will be notified through their smartphones, next revealing their identities
 
-## Play the game
-You can play the game with your friends at: [meteorwerewolv.es](https://meteorwerewolv.es). It's totally free!
-
-## Play with the code
-Once you've cloned or downloaded the repository you'll need to install Meteor on your machine, so head [here](https://www.meteor.com/install) for instructions and do so!
-
-All the necessary Meteor packages are included in the repository under the folder `.meteor`, so you already have them in your machine. The only thing left is to install some Node.js packages by doing:
-
-```
-npm install
-```
-
-You're ready to go, so let's start the engines and lift off:
-```
-meteor
-```
-
 ## Future improvements
 
 * Add ambient sounds to the game (wolf howl, creepy night sound, rooster’s crowing, etc.)
